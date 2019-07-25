@@ -1,6 +1,12 @@
 # IOSSDK-Example
-## setup
-### 1. Install the library
+
+This sample show you 3 ways to use DataDome SDK:
+- URLSession
+- Alamofire
+- Moya
+
+
+## Setup
 ```
 pod install
 ```
@@ -13,11 +19,25 @@ pod setup
 pod install
 ```
 
-## UrlSession
-By default this Example App use UrlSession
+## Usage
 
-## Alamofire
+It is possible to navigate between the three tabs to test the DataDomeSDK with different integration mode.
 
-To use alamofire you need to:
-- uncoment all Alamofire section 
-- comment all UrlSession section 
+##### User Agent
+You can change UserAgent between:
+- __*ALLOWUA*__ : Request pass Datadome
+- __*BLOCKINGUA*__ : Request will be blocked by Datadome and a captcha will be shown.
+
+##### Cache
+It is possible to clear cache for triggering captcha again if you want to.
+
+##### Integrations
+Each integration is in its own ViewController, so it will be easy to see how implementing DataDomeSDK in your own project.
+
+## Documentation
+
+__Documentation__ can be found here:
+*https://docs.datadome.co/docs/sdk-ios*
+
+__Changelog__ can be found here:
+*https://docs.datadome.co/docs/ios-sdk-changelog*
