@@ -11,5 +11,5 @@ import Foundation
 class Config {
     static let BlockUserAgent = "BLOCKUA"
     static let StandardUserAgent = "ALLOWUA"
-    static let DatadomeEndpoint200 = "https://datadome.co/wp-json"
+    static let DatadomeEndpoint = "https://datadome.co/wp-json"
 }

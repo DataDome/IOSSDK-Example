@@ -34,6 +34,9 @@ It is possible to clear cache for triggering captcha again if you want to.
 ##### Integrations
 Each integration is in its own ViewController, so it will be easy to see how implementing DataDomeSDK in your own project.
 
+##### Customization
+You can customize endpoint and user agents in `Config.swift` file.
+
 ## Documentation
 
 __Documentation__ can be found here:

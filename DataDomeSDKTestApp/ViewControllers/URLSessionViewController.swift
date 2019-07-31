@@ -25,7 +25,7 @@ class URLSessionViewController: UIViewController, DataDomeSDKDelegate {
      */
     private var logSource = "URLSession VC"
     private var currentUseragent : String = Config.BlockUserAgent
-    private var currentEndpoint : String = Config.DatadomeEndpoint200
+    private var currentEndpoint : String = Config.DatadomeEndpoint
     private var dataDomeSdk: DataDomeSDK?
     private var appVersion : String?
     private var requestsCount = 0
@@ -85,8 +85,8 @@ class URLSessionViewController: UIViewController, DataDomeSDKDelegate {
     
     @IBAction func didClickOnSwitchUA(_ sender: Any) {
         let alert = UIAlertController(title: "UA", message: "Choose wich Useragent", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "ALLOW", style: .default, handler: { _ in self.switchUaAndEndpoint(useragent: Config.StandardUserAgent, endpoint: Config.DatadomeEndpoint200)}))
-        alert.addAction(UIAlertAction(title: "BLOCK", style: .default, handler: { _ in self.switchUaAndEndpoint(useragent: Config.BlockUserAgent, endpoint: Config.DatadomeEndpoint200)}))
+        alert.addAction(UIAlertAction(title: "ALLOW", style: .default, handler: { _ in self.switchUaAndEndpoint(useragent: Config.StandardUserAgent, endpoint: Config.DatadomeEndpoint)}))
+        alert.addAction(UIAlertAction(title: "BLOCK", style: .default, handler: { _ in self.switchUaAndEndpoint(useragent: Config.BlockUserAgent, endpoint: Config.DatadomeEndpoint)}))
         self.present(alert, animated: true, completion: nil)
         
         responseLabel.isHidden = true
