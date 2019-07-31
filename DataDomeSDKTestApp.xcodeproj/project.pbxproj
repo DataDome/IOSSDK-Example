@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		39FB57D96A1C3E1C3AA8ABE8 /* Pods_DataDomeSDKTestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7097C2B66A8CC8D4250363 /* Pods_DataDomeSDKTestApp.framework */; };
 		4AFE309B228EE7FD00F7D3D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFE309A228EE7FD00F7D3D2 /* AppDelegate.swift */; };
 		4AFE30A0228EE7FD00F7D3D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AFE309E228EE7FD00F7D3D2 /* Main.storyboard */; };
 		4AFE30A2228EE80100F7D3D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AFE30A1228EE80100F7D3D2 /* Assets.xcassets */; };
 		4AFE30A5228EE80100F7D3D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AFE30A3228EE80100F7D3D2 /* LaunchScreen.storyboard */; };
+		7B4D61EB8070053134C7C06C /* Pods_DataDomeSDKTestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC8DA5BE556D5F3CC2CE132 /* Pods_DataDomeSDKTestApp.framework */; };
 		F193630422E9E520003AFD10 /* MoyaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193630122E9E520003AFD10 /* MoyaViewController.swift */; };
 		F193630522E9E520003AFD10 /* AlamofireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193630222E9E520003AFD10 /* AlamofireViewController.swift */; };
 		F193630622E9E520003AFD10 /* URLSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193630322E9E520003AFD10 /* URLSessionViewController.swift */; };
@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1F7097C2B66A8CC8D4250363 /* Pods_DataDomeSDKTestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataDomeSDKTestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AC8DA5BE556D5F3CC2CE132 /* Pods_DataDomeSDKTestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataDomeSDKTestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AFE3097228EE7FD00F7D3D2 /* DataDomeSDKTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataDomeSDKTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AFE309A228EE7FD00F7D3D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AFE309F228EE7FD00F7D3D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -43,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39FB57D96A1C3E1C3AA8ABE8 /* Pods_DataDomeSDKTestApp.framework in Frameworks */,
+				7B4D61EB8070053134C7C06C /* Pods_DataDomeSDKTestApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +62,7 @@
 		46781E298CB305CEF5090798 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1F7097C2B66A8CC8D4250363 /* Pods_DataDomeSDKTestApp.framework */,
+				0AC8DA5BE556D5F3CC2CE132 /* Pods_DataDomeSDKTestApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -130,7 +130,7 @@
 				4AFE3093228EE7FD00F7D3D2 /* Sources */,
 				4AFE3094228EE7FD00F7D3D2 /* Frameworks */,
 				4AFE3095228EE7FD00F7D3D2 /* Resources */,
-				5B476150639FD2590F6BA2D8 /* [CP] Embed Pods Frameworks */,
+				A7771CE882E055826FEFBEC7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -188,7 +188,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5B476150639FD2590F6BA2D8 /* [CP] Embed Pods Frameworks */ = {
+		A7771CE882E055826FEFBEC7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

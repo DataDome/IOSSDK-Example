@@ -67,7 +67,7 @@ class AlamofireViewController: UIViewController, DataDomeSDKDelegate {
         requestsCount += 1
         
         /// Alamofire request Adapter/Retrier
-        AlamofireViewController.alamofireSessionManager.request(self.currentEndpoint).validate().responseJSON { res in
+        AlamofireViewController.alamofireSessionManager.request(self.currentEndpoint).validate().withDataDome(self.dataDomeSdk).responseJSON { res in
             let statusCode = res.response!.statusCode
             
             DispatchQueue.main.async {

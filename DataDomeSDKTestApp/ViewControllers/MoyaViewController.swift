@@ -71,7 +71,7 @@ class MoyaViewController: UIViewController, DataDomeSDKDelegate {
     }
     
     private func moyaCall() {
-        let provider = MoyaProvider<DatadomeService>(endpointClosure: moyaEndPointClosure(), manager: MoyaViewController.alamofireSessionManager, plugins: [NetworkLoggerPlugin(verbose: true)])
+        let provider = MoyaProvider<DatadomeService>(endpointClosure: moyaEndPointClosure(), manager: MoyaViewController.alamofireSessionManager, plugins: [NetworkLoggerPlugin(verbose: true), DataDomePlugin(with: self.dataDomeSdk)])
         let target = DatadomeService.getDataDomeService
         
         provider.request(target, completion: { (result) in
