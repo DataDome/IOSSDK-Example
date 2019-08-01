@@ -15,39 +15,42 @@ enum DatadomeService {
 
 // MARK: - TargetType Protocol Implementation
 extension DatadomeService: TargetType {
-    
-    // NOTE : It is important to set-up validationType because default of Moya is accepting all request and never go in retrier of DD
+    var headers: [String: String]? {
+        return [:]
+    }
+
     var validationType: ValidationType {
         return .successAndRedirectCodes
     }
-    
-    var headers: [String : String]? {
-        return [:]
+
+    var baseURL: URL {
+        guard let url = URL(string: "https://datadome.co/") else {
+            fatalError("Error: Bad BaseURL")
+        }
+        return url
     }
-    
-    var baseURL: URL { return URL(string: "https://datadome.co/")! }
-    
+
     var path: String {
         switch self {
         case .getDataDomeService:
             return "wp-json"
         }
     }
-    
+
     var method: Moya.Method {
         return .get
     }
-    
+
     var sampleData: Data {
-        return "".data(using: String.Encoding.utf8)! as Data
+        return "".data(using: String.Encoding.utf8) ?? Data()
     }
-    
+
     var multipartBody: [Moya.MultipartFormData]? {
         return nil
     }
-    
+
     var task: Task {
-        let defaultParams = [String : Any]()
+        let defaultParams = [String: Any]()
         return .requestParameters(parameters: defaultParams, encoding: URLEncoding.default)
     }
 }

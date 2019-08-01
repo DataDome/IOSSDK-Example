@@ -11,7 +11,7 @@ import DataDomeSDK
 import Alamofire
 
 extension DataDomeSDK {
-    
+
     public func clearCache(_ sessionManager: SessionManager? = nil, logId: Int = 1, logMessage: String = "", logSource: String = "") {
         self.clearCookie()
         sessionManager?.session.reset {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Config {
+public enum Config {
     static let BlockUserAgent = "BLOCKUA"
     static let StandardUserAgent = "ALLOWUA"
     static let DatadomeEndpoint = "https://datadome.co/wp-json"

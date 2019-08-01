@@ -2,6 +2,6 @@ platform :ios, '12.0'
 use_frameworks!
 
 target 'DataDomeSDKTestApp' do
-    pod 'DataDomeSDK'
+    pod 'DataDomeSDK', '~> 1.5.4'
     pod 'Moya', '~> 13.0'
 end

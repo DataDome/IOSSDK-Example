@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (4.8.2)
-  - DataDomeSDK (1.5.3):
+  - DataDomeSDK (1.5.4):
     - Alamofire
     - Moya
   - Moya (13.0.1):
@@ -11,7 +11,7 @@ PODS:
   - Result (4.1.0)
 
 DEPENDENCIES:
-  - DataDomeSDK
+  - DataDomeSDK (~> 1.5.4)
   - Moya (~> 13.0)
 
 SPEC REPOS:
@@ -23,10 +23,10 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  DataDomeSDK: ab7605581c0328d1dea2bdf068cc839ecbb7b0a3
+  DataDomeSDK: b26a84e9629443d2fc3f3efaaf2f93743cfc9cd9
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
 
-PODFILE CHECKSUM: c6ef627de6fe63d24dc0c70648b6ece439867e1c
+PODFILE CHECKSUM: 1a57697833a709fe27a24ce9f835cc00661f7bd3
 
 COCOAPODS: 1.7.5

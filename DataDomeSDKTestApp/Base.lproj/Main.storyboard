@@ -11,7 +11,7 @@
         <!--Alamofire-->
         <scene sceneID="qkS-jI-rdb">
             <objects>
-                <viewController id="J2s-T1-Q0w" customClass="AlamofireViewController" customModule="DataDomePOCCaptchaIOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="J2s-T1-Q0w" customClass="AlamofireViewController" customModule="DataDomeSDKTestApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="S5u-gD-bE7"/>
                         <viewControllerLayoutGuide type="bottom" id="thp-90-hi1"/>
@@ -83,8 +83,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Alamofire" id="ww1-jC-ZZF">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="ONu-aF-sSK">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kef-1z-RKb">
+                        <barButtonItem key="leftBarButtonItem" id="ONu-aF-sSK">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kef-1z-RKb">
                                 <rect key="frame" x="16" y="7" width="73" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="UserAgent"/>
@@ -93,7 +93,7 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="VWS-7W-nf4">
+                        <barButtonItem key="rightBarButtonItem" id="VWS-7W-nf4">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oYy-mI-JPZ">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -177,7 +177,7 @@
         <!--URLSession-->
         <scene sceneID="r0P-nv-VzX">
             <objects>
-                <viewController id="uIs-eR-Ye8" customClass="URLSessionViewController" customModule="DataDomePOCCaptchaIOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uIs-eR-Ye8" customClass="URLSessionViewController" customModule="DataDomeSDKTestApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xbw-om-UR4"/>
                         <viewControllerLayoutGuide type="bottom" id="RyQ-wz-UQZ"/>
@@ -249,8 +249,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="URLSession" id="rie-H6-Jje">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="kiT-kM-7Pr">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oja-VM-dXi">
+                        <barButtonItem key="leftBarButtonItem" id="kiT-kM-7Pr">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oja-VM-dXi">
                                 <rect key="frame" x="16" y="7" width="73" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="UserAgent"/>
@@ -259,7 +259,7 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="BCH-yA-HoI">
+                        <barButtonItem key="rightBarButtonItem" id="BCH-yA-HoI">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="j4Z-4h-0HM">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -284,7 +284,7 @@
         <!--Moya-->
         <scene sceneID="Rct-bQ-Wxi">
             <objects>
-                <viewController id="f8k-g1-ceH" customClass="MoyaViewController" customModule="DataDomePOCCaptchaIOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="f8k-g1-ceH" customClass="MoyaViewController" customModule="DataDomeSDKTestApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4cJ-wb-Gqv"/>
                         <viewControllerLayoutGuide type="bottom" id="Pdj-cF-MYo"/>
@@ -356,9 +356,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Moya" id="416-GQ-1p8">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="btJ-6D-4eD">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1XQ-I5-zmi">
-                                <rect key="frame" x="16" y="7" width="71" height="30"/>
+                        <barButtonItem key="leftBarButtonItem" id="btJ-6D-4eD">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1XQ-I5-zmi">
+                                <rect key="frame" x="16" y="7" width="73" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="UserAgent"/>
                                 <connections>
@@ -366,7 +366,7 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="TGL-jj-URi">
+                        <barButtonItem key="rightBarButtonItem" id="TGL-jj-URi">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wMB-y6-33c">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
