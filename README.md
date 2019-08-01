@@ -1,7 +1,7 @@
 # IOSSDK-Example
 
-[![Badge w/ Version](https://cocoapod-badges.herokuapp.com/v/DataDomeSDK/badge.png)](https://datadome.co/)
-![MIT](https://cocoapod-badges.herokuapp.com/l/NSStringMask/badge.png)
+[![Badge w/ Version](https://img.shields.io/cocoapods/v/DataDomeSDK)](https://datadome.co/)
+![MIT](https://img.shields.io/cocoapods/l/DataDomeSDK)
 
 This sample show you 3 ways to use __DataDomeSDK__:
 - URLSession
