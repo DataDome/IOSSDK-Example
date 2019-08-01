@@ -1,6 +1,9 @@
 # IOSSDK-Example
 
-This sample show you 3 ways to use DataDome SDK:
+[![Badge w/ Version](https://cocoapod-badges.herokuapp.com/v/DataDomeSDK/badge.png)](https://datadome.co/)
+![MIT](https://cocoapod-badges.herokuapp.com/l/NSStringMask/badge.png)
+
+This sample show you 3 ways to use __DataDomeSDK__:
 - URLSession
 - Alamofire
 - Moya
