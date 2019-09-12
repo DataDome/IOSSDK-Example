@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CF6B695A293A578E2855FA8 /* Pods_DataDomeSDKTestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0666ED411F7EAE010F2B59 /* Pods_DataDomeSDKTestApp.framework */; };
 		4AFE309B228EE7FD00F7D3D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFE309A228EE7FD00F7D3D2 /* AppDelegate.swift */; };
 		4AFE30A0228EE7FD00F7D3D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AFE309E228EE7FD00F7D3D2 /* Main.storyboard */; };
 		4AFE30A2228EE80100F7D3D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AFE30A1228EE80100F7D3D2 /* Assets.xcassets */; };
 		4AFE30A5228EE80100F7D3D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AFE30A3228EE80100F7D3D2 /* LaunchScreen.storyboard */; };
-		7B4D61EB8070053134C7C06C /* Pods_DataDomeSDKTestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC8DA5BE556D5F3CC2CE132 /* Pods_DataDomeSDKTestApp.framework */; };
 		F193630422E9E520003AFD10 /* MoyaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193630122E9E520003AFD10 /* MoyaViewController.swift */; };
 		F193630522E9E520003AFD10 /* AlamofireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193630222E9E520003AFD10 /* AlamofireViewController.swift */; };
 		F193630622E9E520003AFD10 /* URLSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193630322E9E520003AFD10 /* URLSessionViewController.swift */; };
@@ -21,15 +21,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0AC8DA5BE556D5F3CC2CE132 /* Pods_DataDomeSDKTestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataDomeSDKTestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AFE3097228EE7FD00F7D3D2 /* DataDomeSDKTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataDomeSDKTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AFE309A228EE7FD00F7D3D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AFE309F228EE7FD00F7D3D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4AFE30A1228EE80100F7D3D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AFE30A4228EE80100F7D3D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4AFE30A6228EE80100F7D3D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E2843274AA778A82272372F /* Pods-DataDomeSDKTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataDomeSDKTestApp.debug.xcconfig"; path = "Target Support Files/Pods-DataDomeSDKTestApp/Pods-DataDomeSDKTestApp.debug.xcconfig"; sourceTree = "<group>"; };
-		B3E8B774376C73D901AFCD43 /* Pods-DataDomeSDKTestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataDomeSDKTestApp.release.xcconfig"; path = "Target Support Files/Pods-DataDomeSDKTestApp/Pods-DataDomeSDKTestApp.release.xcconfig"; sourceTree = "<group>"; };
+		5A0666ED411F7EAE010F2B59 /* Pods_DataDomeSDKTestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataDomeSDKTestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		870EF640DF9C37570DBAB3AD /* Pods-DataDomeSDKTestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataDomeSDKTestApp.release.xcconfig"; path = "Target Support Files/Pods-DataDomeSDKTestApp/Pods-DataDomeSDKTestApp.release.xcconfig"; sourceTree = "<group>"; };
+		88FB9DC9AE7E93B2D70D48D2 /* Pods-DataDomeSDKTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataDomeSDKTestApp.debug.xcconfig"; path = "Target Support Files/Pods-DataDomeSDKTestApp/Pods-DataDomeSDKTestApp.debug.xcconfig"; sourceTree = "<group>"; };
+		F182ED692329490300B73F76 /* DataDomeSDKTestApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DataDomeSDKTestApp.entitlements; sourceTree = "<group>"; };
 		F193630122E9E520003AFD10 /* MoyaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoyaViewController.swift; sourceTree = "<group>"; };
 		F193630222E9E520003AFD10 /* AlamofireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireViewController.swift; sourceTree = "<group>"; };
 		F193630322E9E520003AFD10 /* URLSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionViewController.swift; sourceTree = "<group>"; };
@@ -43,7 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B4D61EB8070053134C7C06C /* Pods_DataDomeSDKTestApp.framework in Frameworks */,
+				2CF6B695A293A578E2855FA8 /* Pods_DataDomeSDKTestApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,18 +54,10 @@
 		3B733BF31A9157C552DF755C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6E2843274AA778A82272372F /* Pods-DataDomeSDKTestApp.debug.xcconfig */,
-				B3E8B774376C73D901AFCD43 /* Pods-DataDomeSDKTestApp.release.xcconfig */,
+				88FB9DC9AE7E93B2D70D48D2 /* Pods-DataDomeSDKTestApp.debug.xcconfig */,
+				870EF640DF9C37570DBAB3AD /* Pods-DataDomeSDKTestApp.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		46781E298CB305CEF5090798 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0AC8DA5BE556D5F3CC2CE132 /* Pods_DataDomeSDKTestApp.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		4AFE308E228EE7FD00F7D3D2 = {
@@ -73,7 +66,7 @@
 				4AFE3099228EE7FD00F7D3D2 /* DataDomeSDKTestApp */,
 				4AFE3098228EE7FD00F7D3D2 /* Products */,
 				3B733BF31A9157C552DF755C /* Pods */,
-				46781E298CB305CEF5090798 /* Frameworks */,
+				6FC238B05ACD9DB2333ECC7C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +81,7 @@
 		4AFE3099228EE7FD00F7D3D2 /* DataDomeSDKTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				F182ED692329490300B73F76 /* DataDomeSDKTestApp.entitlements */,
 				F193630722E9E530003AFD10 /* Helpers */,
 				F193630022E9E50D003AFD10 /* ViewControllers */,
 				4AFE309A228EE7FD00F7D3D2 /* AppDelegate.swift */,
@@ -97,6 +91,14 @@
 				4AFE30A6228EE80100F7D3D2 /* Info.plist */,
 			);
 			path = DataDomeSDKTestApp;
+			sourceTree = "<group>";
+		};
+		6FC238B05ACD9DB2333ECC7C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A0666ED411F7EAE010F2B59 /* Pods_DataDomeSDKTestApp.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		F193630022E9E50D003AFD10 /* ViewControllers */ = {
@@ -126,12 +128,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4AFE30A9228EE80100F7D3D2 /* Build configuration list for PBXNativeTarget "DataDomeSDKTestApp" */;
 			buildPhases = (
-				AF17AA3E28B48892959E3181 /* [CP] Check Pods Manifest.lock */,
+				72B526AD077923B5DDEC48E0 /* [CP] Check Pods Manifest.lock */,
 				4AFE3093228EE7FD00F7D3D2 /* Sources */,
 				4AFE3094228EE7FD00F7D3D2 /* Frameworks */,
 				4AFE3095228EE7FD00F7D3D2 /* Resources */,
-				A7771CE882E055826FEFBEC7 /* [CP] Embed Pods Frameworks */,
 				F1079D8422F3316A002002BA /* ShellScript */,
+				4112F055E17ECA6DCBDF5AAA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -154,6 +156,20 @@
 				TargetAttributes = {
 					4AFE3096228EE7FD00F7D3D2 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.DataProtection = {
+								enabled = 0;
+							};
+							com.apple.HomeKit = {
+								enabled = 0;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -189,7 +205,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A7771CE882E055826FEFBEC7 /* [CP] Embed Pods Frameworks */ = {
+		4112F055E17ECA6DCBDF5AAA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -206,7 +222,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DataDomeSDKTestApp/Pods-DataDomeSDKTestApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AF17AA3E28B48892959E3181 /* [CP] Check Pods Manifest.lock */ = {
+		72B526AD077923B5DDEC48E0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -404,16 +420,18 @@
 		};
 		4AFE30AA228EE80100F7D3D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E2843274AA778A82272372F /* Pods-DataDomeSDKTestApp.debug.xcconfig */;
+			baseConfigurationReference = 88FB9DC9AE7E93B2D70D48D2 /* Pods-DataDomeSDKTestApp.debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 35RYVQWTYW;
 				INFOPLIST_FILE = DataDomeSDKTestApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = co.datadome.DataDomeSDKTestApp;
+				PRODUCT_BUNDLE_IDENTIFIER = co.datadome.DataDomeSampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -422,16 +440,18 @@
 		};
 		4AFE30AB228EE80100F7D3D2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3E8B774376C73D901AFCD43 /* Pods-DataDomeSDKTestApp.release.xcconfig */;
+			baseConfigurationReference = 870EF640DF9C37570DBAB3AD /* Pods-DataDomeSDKTestApp.release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 35RYVQWTYW;
 				INFOPLIST_FILE = DataDomeSDKTestApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = co.datadome.DataDomeSDKTestApp;
+				PRODUCT_BUNDLE_IDENTIFIER = co.datadome.DataDomeSampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
