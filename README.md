@@ -3,10 +3,11 @@
 [![Badge w/ Version](https://img.shields.io/cocoapods/v/DataDomeSDK)](https://datadome.co/)
 ![MIT](https://img.shields.io/cocoapods/l/DataDomeSDK)
 
-This sample show you 3 ways to use __DataDomeSDK__:
+This sample show you 4 ways to use __DataDomeSDK__:
 - URLSession
 - Alamofire
 - Moya
+- Manual integration (:warning:)
 
 
 ## Setup

@@ -1,55 +1,45 @@
 //
-//  MoyaViewController.swift
-//  DataDomePOCCaptchaIOS
+//  ManualViewController.swift
+//  DataDomeSDKTestApp
 //
-//  Created by Hugo Maurer on 23/07/2019.
-//  Copyright © 2019 dev-datadome-05. All rights reserved.
+//  Created by Hugo Maurer on 02/10/2019.
+//  Copyright © 2019 DataDome. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import DataDomeSDK
-import Alamofire
-import Moya
 
-class MoyaViewController: UIViewController, DataDomeSDKDelegate {
+class ManualViewController: UIViewController, DataDomeSDKDelegate {
 
     /**
      * UI components declaration;
      */
+
     @IBOutlet weak var userAgentLabel: UILabel!
-    @IBOutlet var containerView: UIView!
     @IBOutlet weak var delegateResponseLabel: UILabel!
     @IBOutlet weak var responseLabel: UILabel!
+    @IBOutlet var containerView: UIView!
 
     /**
      * Variable declaration
      */
-    private var logSource = "Moya VC"
+    private var logSource = "Manual VC"
     private var currentUseragent: String = Config.BlockUserAgent
     private var currentEndpoint: String = Config.DatadomeEndpoint
     private var dataDomeSdk: DataDomeSDK?
     private var appVersion: String?
     private var requestsCount = 0
-
-    static let alamofireSessionManager: SessionManager = {
-        let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
-        configuration.httpCookieStorage = HTTPCookieStorage.shared
-        return SessionManager(configuration: configuration)
-    }()
+    private var urlSession: URLSession?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         self.appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
 
         dataDomeSdk = DataDomeSDK(containerView: containerView, key: "my_test_key", appVersion: appVersion, userAgent: currentUseragent)
         dataDomeSdk?.delegate = self
 
-        /// Alamofire request Adapter/Retrier
-        MoyaViewController.alamofireSessionManager.adapter = dataDomeSdk?.alamofireSessionAdapter
-        MoyaViewController.alamofireSessionManager.retrier = dataDomeSdk?.alamofireSessionRetrier
-
+        urlSession = URLSession(configuration: URLSessionConfiguration.default)
         initUI()
     }
 
@@ -60,56 +50,44 @@ class MoyaViewController: UIViewController, DataDomeSDKDelegate {
     }
 
     @IBAction func makeRequest(_ sender: UIButton) {
+
+        guard let url = URL(string: currentEndpoint) else { return }
+        var request = URLRequest(url: url)
+
         responseLabel.isHidden = true
         delegateResponseLabel.isHidden = true
 
         requestsCount += 1
 
-        moyaCall()
-    }
+        if let headers = dataDomeSdk?.getHeaders() {
+            for header in headers {
+                print("\(header.key) -> \(header.value)")
+                request.addValue(header.value, forHTTPHeaderField: header.key)
+            }
+        }
 
+        let task = self.urlSession?.dataTask(with: request, completionHandler: { data, response, _ in
+            guard let httpResponse = response as? HTTPURLResponse,
+                let url = httpResponse.url,
+                let data = data else {
+                return
+            }
 
-    private func moyaCall() {
-        let provider = MoyaProvider<DatadomeService>(endpointClosure: moyaEndPointClosure(),
-                                                     manager: MoyaViewController.alamofireSessionManager,
-                                                     plugins: [NetworkLoggerPlugin(verbose: true), DataDomePlugin(with: self.dataDomeSdk)])
-
-        let target = DatadomeService.getDataDomeService
-
-        provider.request(target, completion: { (result) in
-
-            switch result {
-            case let .success(response):
-                guard let statusCode = response.response?.statusCode else { return }
+            if self.dataDomeSdk?.verifyResponse(statusCode: httpResponse.statusCode, headers: httpResponse.allHeaderFields, url: url) == true {
+                self.dataDomeSdk?.handleResponse(statusCode: httpResponse.statusCode,
+                                                 headers: httpResponse.allHeaderFields,
+                                                 url: url,
+                                                 data: data,
+                                                 completion: { (completion, message) in
+                })
+            } else {
                 DispatchQueue.main.async {
-                    self.responseLabel.text = String(format: "Response code: %d", statusCode)
-                    self.responseLabel.isHidden = false
-                }
-            case let .failure(error):
-                guard let statusCode = error.response?.statusCode else { return }
-                DispatchQueue.main.async {
-                    self.responseLabel.text = String(format: "Response code: %d", statusCode)
+                    self.responseLabel.text = String(format: "Response code: %d", httpResponse.statusCode)
                     self.responseLabel.isHidden = false
                 }
             }
         })
-    }
-
-    private func moyaEndPointClosure() -> MoyaProvider<DatadomeService>.EndpointClosure {
-
-        return { (target: DatadomeService) -> Endpoint in
-
-            let url = self.currentEndpoint
-            let endpoint = Endpoint(
-                url: url,
-                sampleResponseClosure: { .networkResponse(200, target.sampleData) },
-                method: target.method,
-                task: target.task,
-                httpHeaderFields: target.headers
-            )
-
-            return endpoint
-        }
+        task?.resume()
     }
 
     private func switchUaAndEndpoint(useragent: String, endpoint: String) {
