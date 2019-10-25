@@ -20,7 +20,9 @@ class MoyaViewController: UIViewController, DataDomeSDKDelegate {
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var delegateResponseLabel: UILabel!
     @IBOutlet weak var responseLabel: UILabel!
-
+    @IBOutlet weak var multipleRequestSwitchButton: UISwitch!
+    @IBOutlet weak var responseTextView: UITextView!
+    
     /**
      * Variable declaration
      */
@@ -29,7 +31,6 @@ class MoyaViewController: UIViewController, DataDomeSDKDelegate {
     private var currentEndpoint: String = Config.DatadomeEndpoint
     private var dataDomeSdk: DataDomeSDK?
     private var appVersion: String?
-    private var requestsCount = 0
 
     static let alamofireSessionManager: SessionManager = {
         let configuration = URLSessionConfiguration.default
@@ -57,19 +58,26 @@ class MoyaViewController: UIViewController, DataDomeSDKDelegate {
         responseLabel.isHidden = true
         delegateResponseLabel.isHidden = true
         self.userAgentLabel.text = String(format: "UA: %@ \nEP: %@", self.currentUseragent, self.currentEndpoint)
+        responseTextView.text = ""
+
+        self.multipleRequestSwitchButton.onTintColor = .green
+        self.multipleRequestSwitchButton.tintColor = .lightGray
+        self.multipleRequestSwitchButton.layer.cornerRadius = self.multipleRequestSwitchButton.frame.height / 2
+        self.multipleRequestSwitchButton.backgroundColor = .lightGray
     }
 
     @IBAction func makeRequest(_ sender: UIButton) {
         responseLabel.isHidden = true
         delegateResponseLabel.isHidden = true
+        responseTextView.text = ""
 
-        requestsCount += 1
-
-        moyaCall()
+        let requestToMakeCount = multipleRequestSwitchButton.isOn ? 5 : 1
+        for i in 1...requestToMakeCount {
+            moyaCall(idToPrint: i)
+        }
     }
 
-
-    private func moyaCall() {
+    private func moyaCall(idToPrint: Int) {
         let provider = MoyaProvider<DatadomeService>(endpointClosure: moyaEndPointClosure(),
                                                      manager: MoyaViewController.alamofireSessionManager,
                                                      plugins: [NetworkLoggerPlugin(verbose: true), DataDomePlugin(with: self.dataDomeSdk)])
@@ -84,12 +92,16 @@ class MoyaViewController: UIViewController, DataDomeSDKDelegate {
                 DispatchQueue.main.async {
                     self.responseLabel.text = String(format: "Response code: %d", statusCode)
                     self.responseLabel.isHidden = false
+                    let text = self.responseTextView.text ?? ""
+                    self.responseTextView.text = text == "" ? "Response from Task: \(idToPrint)" : "\(text)\nResponse from Task: \(idToPrint)"
                 }
             case let .failure(error):
                 guard let statusCode = error.response?.statusCode else { return }
                 DispatchQueue.main.async {
                     self.responseLabel.text = String(format: "Response code: %d", statusCode)
                     self.responseLabel.isHidden = false
+                    let text = self.responseTextView.text ?? ""
+                    self.responseTextView.text = text == "" ? "Response from Task: \(idToPrint)" : "\(text)\nResponse from Task: \(idToPrint)"
                 }
             }
         })

@@ -19,7 +19,9 @@ class URLSessionViewController: UIViewController, DataDomeSDKDelegate {
     @IBOutlet weak var delegateResponseLabel: UILabel!
     @IBOutlet weak var responseLabel: UILabel!
     @IBOutlet var containerView: UIView!
-
+    @IBOutlet weak var multipleRequestSwitchButton: UISwitch!
+    @IBOutlet weak var responseTextView: UITextView!
+    
     /**
      * Variable declaration
      */
@@ -28,7 +30,6 @@ class URLSessionViewController: UIViewController, DataDomeSDKDelegate {
     private var currentEndpoint: String = Config.DatadomeEndpoint
     private var dataDomeSdk: DataDomeSDK?
     private var appVersion: String?
-    private var requestsCount = 0
     private var urlSession: URLSession?
 
     override func viewDidLoad() {
@@ -49,27 +50,53 @@ class URLSessionViewController: UIViewController, DataDomeSDKDelegate {
         responseLabel.isHidden = true
         delegateResponseLabel.isHidden = true
         self.userAgentLabel.text = String(format: "UA: %@ \nEP: %@", self.currentUseragent, self.currentEndpoint)
+        responseTextView.text = ""
+
+        self.multipleRequestSwitchButton.onTintColor = .green
+        self.multipleRequestSwitchButton.tintColor = .lightGray
+        self.multipleRequestSwitchButton.layer.cornerRadius = self.multipleRequestSwitchButton.frame.height / 2
+        self.multipleRequestSwitchButton.backgroundColor = .lightGray
     }
 
     @IBAction func makeRequest(_ sender: UIButton) {
-
-        guard let url = URL(string: currentEndpoint) else { return }
-        let request = URLRequest(url: url)
-
         responseLabel.isHidden = true
         delegateResponseLabel.isHidden = true
-        requestsCount += 1
+        self.responseTextView.text = ""
 
-        let task = self.urlSession?.dataTask(with: request, ddSdk: self.dataDomeSdk, completionHandler: { _, response, _ in
+        let dispatchGroup = DispatchGroup()
+        let requestToMakeCount = multipleRequestSwitchButton.isOn ? 5 : 1
+
+        for i in 1...requestToMakeCount {
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.makeRequest(dispatchGroup: dispatchGroup, taskIdToPrint: "\(i)")
+            }
+        }
+
+        dispatchGroup.wait()
+    }
+
+    private func makeRequest(dispatchGroup: DispatchGroup, taskIdToPrint: String = "") {
+        dispatchGroup.enter()
+        guard let url = URL(string: currentEndpoint) else { return }
+        let request = URLRequest(url: url)
+        let urlSession = URLSession(configuration: URLSessionConfiguration.default, delegate: dataDomeSdk?.urlSessionDelegate, delegateQueue: OperationQueue.main)
+
+        let task = urlSession.dataTask(with: request, ddSdk: self.dataDomeSdk, completionHandler: { _, response, _ in
             guard let httpResponse = response as? HTTPURLResponse else {
+                dispatchGroup.leave()
                 return
             }
             DispatchQueue.main.async {
+                let text = self.responseTextView.text ?? ""
+                self.responseTextView.text = text == "" ? "Response from Task: \(taskIdToPrint)" : "\(text)\nResponse from Task: \(taskIdToPrint)"
+                print("Response from Task: \(taskIdToPrint)")
                 self.responseLabel.text = String(format: "Response code: %d", httpResponse.statusCode)
                 self.responseLabel.isHidden = false
+
+                dispatchGroup.leave()
             }
         })
-        task?.resume()
+        task.resume()
     }
 
     private func switchUaAndEndpoint(useragent: String, endpoint: String) {

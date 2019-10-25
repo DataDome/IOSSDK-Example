@@ -19,7 +19,9 @@ class AlamofireViewController: UIViewController, DataDomeSDKDelegate {
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var delegateResponseLabel: UILabel!
     @IBOutlet weak var responseLabel: UILabel!
-
+    @IBOutlet weak var multipleRequestSwitchButton: UISwitch!
+    @IBOutlet weak var responseTextView: UITextView!
+    
     /**
      * Variable declaration
      */
@@ -28,7 +30,6 @@ class AlamofireViewController: UIViewController, DataDomeSDKDelegate {
     private var currentEndpoint: String = Config.DatadomeEndpoint
     private var dataDomeSdk: DataDomeSDK?
     private var appVersion: String?
-    private var requestsCount = 0
 
     static let alamofireSessionManager: SessionManager = {
         let configuration = URLSessionConfiguration.default
@@ -56,21 +57,34 @@ class AlamofireViewController: UIViewController, DataDomeSDKDelegate {
         responseLabel.isHidden = true
         delegateResponseLabel.isHidden = true
         self.userAgentLabel.text = String(format: "UA: %@ \nEP: %@", self.currentUseragent, self.currentEndpoint)
+        self.responseTextView.text = ""
+
+        self.multipleRequestSwitchButton.onTintColor = .green
+        self.multipleRequestSwitchButton.tintColor = .lightGray
+        self.multipleRequestSwitchButton.layer.cornerRadius = self.multipleRequestSwitchButton.frame.height / 2
+        self.multipleRequestSwitchButton.backgroundColor = .lightGray
     }
 
     @IBAction func makeRequest(_ sender: UIButton) {
         responseLabel.isHidden = true
         delegateResponseLabel.isHidden = true
+        self.responseTextView.text = ""
 
-        requestsCount += 1
+        let requestToMakeCount = multipleRequestSwitchButton.isOn ? 5 : 1
 
-        /// Alamofire request Adapter/Retrier
-        AlamofireViewController.alamofireSessionManager.request(self.currentEndpoint).withDataDome(dataDomeSdk).validate().responseJSON { res in
-            guard let statusCode = res.response?.statusCode else { return }
-
-            DispatchQueue.main.async {
-                self.responseLabel.text = String(format: "Response code: %d", statusCode)
-                self.responseLabel.isHidden = false
+        for i in 1...requestToMakeCount {
+            DispatchQueue.global(qos: .userInitiated).async {
+                /// Alamofire request Adapter/Retrier
+                AlamofireViewController.alamofireSessionManager.request(self.currentEndpoint).withDataDome(self.dataDomeSdk).validate().responseJSON { res in
+                    guard let statusCode = res.response?.statusCode else { return }
+                    DispatchQueue.main.async {
+                        let text = self.responseTextView.text ?? ""
+                        self.responseTextView.text = text == "" ? "Response from Task: \(i)" : "\(text)\nResponse from Task: \(i)"
+                        print("Response from Task: \(i)")
+                        self.responseLabel.text = String(format: "Response code: %d", statusCode)
+                        self.responseLabel.isHidden = false
+                    }
+                }
             }
         }
     }

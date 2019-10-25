@@ -23,7 +23,7 @@ class ManualViewController: UIViewController, DataDomeSDKDelegate {
 
     /**
      * Variable declaration
-     */
+     */ 
     private var logSource = "Manual VC"
     private var currentUseragent: String = Config.BlockUserAgent
     private var currentEndpoint: String = Config.DatadomeEndpoint
