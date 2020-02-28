@@ -32,12 +32,17 @@ class MoyaViewController: UIViewController, DataDomeSDKDelegate {
     private var dataDomeSdk: DataDomeSDK?
     private var appVersion: String?
 
-    static let alamofireSessionManager: SessionManager = {
+    var alamofireSessionManager: Session {
         let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
+        configuration.headers = .default
         configuration.httpCookieStorage = HTTPCookieStorage.shared
-        return SessionManager(configuration: configuration)
-    }()
+        if let ddSdk = dataDomeSdk {
+            let interceptors = Interceptor(adapter: ddSdk.alamofireSessionAdapter,
+                                           retrier: ddSdk.alamofireSessionRetrier)
+            return Session(configuration: configuration, interceptor: interceptors)
+        }
+        return Session(configuration: configuration)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +51,6 @@ class MoyaViewController: UIViewController, DataDomeSDKDelegate {
 
         dataDomeSdk = DataDomeSDK(containerView: containerView, key: "my_test_key", appVersion: appVersion, userAgent: currentUseragent)
         dataDomeSdk?.delegate = self
-
-        /// Alamofire request Adapter/Retrier
-        MoyaViewController.alamofireSessionManager.adapter = dataDomeSdk?.alamofireSessionAdapter
-        MoyaViewController.alamofireSessionManager.retrier = dataDomeSdk?.alamofireSessionRetrier
 
         initUI()
     }
@@ -79,8 +80,8 @@ class MoyaViewController: UIViewController, DataDomeSDKDelegate {
 
     private func moyaCall(idToPrint: Int) {
         let provider = MoyaProvider<DatadomeService>(endpointClosure: moyaEndPointClosure(),
-                                                     manager: MoyaViewController.alamofireSessionManager,
-                                                     plugins: [NetworkLoggerPlugin(verbose: true), DataDomePlugin(with: self.dataDomeSdk)])
+                                                     session: self.alamofireSessionManager,
+                                                     plugins: [NetworkLoggerPlugin(configuration: .init(logOptions: .verbose)), DataDomePlugin(with: self.dataDomeSdk)])
 
         let target = DatadomeService.getDataDomeService
 
@@ -148,7 +149,7 @@ class MoyaViewController: UIViewController, DataDomeSDKDelegate {
     }
 
     @IBAction func didClickOnClearCache(_ sender: Any) {
-        dataDomeSdk?.clearCache(AlamofireViewController.alamofireSessionManager, logId: 1, logMessage: "Cache cleared", logSource: self.logSource)
+        dataDomeSdk?.clearCache(self.alamofireSessionManager, logId: 1, logMessage: "Cache cleared", logSource: self.logSource)
         let alert = UIAlertController(title: "Cache cleared", message: "Cache is cleared", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)

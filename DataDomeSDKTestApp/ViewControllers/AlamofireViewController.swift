@@ -21,7 +21,7 @@ class AlamofireViewController: UIViewController, DataDomeSDKDelegate {
     @IBOutlet weak var responseLabel: UILabel!
     @IBOutlet weak var multipleRequestSwitchButton: UISwitch!
     @IBOutlet weak var responseTextView: UITextView!
-    
+
     /**
      * Variable declaration
      */
@@ -31,12 +31,7 @@ class AlamofireViewController: UIViewController, DataDomeSDKDelegate {
     private var dataDomeSdk: DataDomeSDK?
     private var appVersion: String?
 
-    static let alamofireSessionManager: SessionManager = {
-        let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
-        configuration.httpCookieStorage = HTTPCookieStorage.shared
-        return SessionManager(configuration: configuration)
-    }()
+    var alamofireSessionManager: Session?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +41,14 @@ class AlamofireViewController: UIViewController, DataDomeSDKDelegate {
         dataDomeSdk = DataDomeSDK(containerView: containerView, key: "my_test_key", appVersion: appVersion, userAgent: currentUseragent)
         dataDomeSdk?.delegate = self
 
-        /// Alamofire request Adapter/Retrier
-        AlamofireViewController.alamofireSessionManager.adapter = dataDomeSdk?.alamofireSessionAdapter
-        AlamofireViewController.alamofireSessionManager.retrier = dataDomeSdk?.alamofireSessionRetrier
+        let configuration = URLSessionConfiguration.default
+        configuration.headers = .default
+        configuration.httpCookieStorage = HTTPCookieStorage.shared
+        if let ddSdk = dataDomeSdk {
+            let interceptors = Interceptor(adapter: ddSdk.alamofireSessionAdapter,
+                                            retrier: ddSdk.alamofireSessionRetrier)
+            alamofireSessionManager = Session(configuration: configuration, interceptor: interceptors)
+        }
 
         initUI()
     }
@@ -75,7 +75,7 @@ class AlamofireViewController: UIViewController, DataDomeSDKDelegate {
         for i in 1...requestToMakeCount {
             DispatchQueue.global(qos: .userInitiated).async {
                 /// Alamofire request Adapter/Retrier
-                AlamofireViewController.alamofireSessionManager.request(self.currentEndpoint).withDataDome(self.dataDomeSdk).validate().responseJSON { res in
+                self.alamofireSessionManager?.request(self.currentEndpoint).withDataDome(self.dataDomeSdk).validate().responseJSON { res in
                     guard let statusCode = res.response?.statusCode else { return }
                     DispatchQueue.main.async {
                         let text = self.responseTextView.text ?? ""
@@ -113,7 +113,7 @@ class AlamofireViewController: UIViewController, DataDomeSDKDelegate {
     }
 
     @IBAction func didClickOnClearCache(_ sender: Any) {
-        dataDomeSdk?.clearCache(AlamofireViewController.alamofireSessionManager, logId: 1, logMessage: "Cache cleared", logSource: self.logSource)
+        dataDomeSdk?.clearCache(self.alamofireSessionManager, logId: 1, logMessage: "Cache cleared", logSource: self.logSource)
         let alert = UIAlertController(title: "Cache cleared", message: "Cache is cleared", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import DataDomeSDK
+import Alamofire
 
 class ManualViewController: UIViewController, DataDomeSDKDelegate {
 
@@ -114,7 +115,7 @@ class ManualViewController: UIViewController, DataDomeSDKDelegate {
     }
 
     @IBAction func didClickOnClearCache(_ sender: Any) {
-        dataDomeSdk?.clearCache(AlamofireViewController.alamofireSessionManager, logId: 1, logMessage: "Cache cleared", logSource: self.logSource)
+        dataDomeSdk?.clearCache(AF, logId: 1, logMessage: "Cache cleared", logSource: self.logSource)
         let alert = UIAlertController(title: "Cache cleared", message: "Cache is cleared", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
