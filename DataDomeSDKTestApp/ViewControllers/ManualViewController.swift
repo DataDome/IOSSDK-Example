@@ -60,7 +60,7 @@ class ManualViewController: UIViewController, DataDomeSDKDelegate {
 
         requestsCount += 1
 
-        if let headers = dataDomeSdk?.getHeaders() {
+        if let headers = dataDomeSdk?.getHeaders(withUserAgent: true) {
             for header in headers {
                 print("\(header.key) -> \(header.value)")
                 request.addValue(header.value, forHTTPHeaderField: header.key)
@@ -74,12 +74,15 @@ class ManualViewController: UIViewController, DataDomeSDKDelegate {
                 return
             }
 
+            debugPrint("URL: \(url)")
+
             if self.dataDomeSdk?.verifyResponse(statusCode: httpResponse.statusCode, headers: httpResponse.allHeaderFields, url: url) == true {
                 self.dataDomeSdk?.handleResponse(statusCode: httpResponse.statusCode,
                                                  headers: httpResponse.allHeaderFields,
                                                  url: url,
                                                  data: data,
                                                  completion: { (completion, message) in
+                                                    debugPrint(message ?? "")
                 })
             } else {
                 DispatchQueue.main.async {
