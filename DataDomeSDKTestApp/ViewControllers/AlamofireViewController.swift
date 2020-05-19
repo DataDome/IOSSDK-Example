@@ -45,8 +45,9 @@ class AlamofireViewController: UIViewController, DataDomeSDKDelegate {
         configuration.headers = .default
         configuration.httpCookieStorage = HTTPCookieStorage.shared
         if let ddSdk = dataDomeSdk {
-            let interceptors = Interceptor(adapter: ddSdk.alamofireSessionAdapter,
-                                            retrier: ddSdk.alamofireSessionRetrier)
+            let loader = AlamofireLoader(dataDomeSDK: ddSdk)
+            let interceptors = Interceptor(adapter: loader.alamofireSessionAdapter,
+                                            retrier: loader.alamofireSessionRetrier)
             alamofireSessionManager = Session(configuration: configuration, interceptor: interceptors)
         }
 
