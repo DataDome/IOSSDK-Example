@@ -19,15 +19,16 @@ class AlamofireViewController: UIViewController, DataDomeSDKDelegate {
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var delegateResponseLabel: UILabel!
     @IBOutlet weak var responseLabel: UILabel!
-    @IBOutlet weak var multipleRequestSwitchButton: UISwitch!
     @IBOutlet weak var responseTextView: UITextView!
+    @IBOutlet weak var multipleRequestSwitchButton: UISwitch!
 
     /**
      * Variable declaration
      */
     private var logSource = "Alamofire VC"
-    private var currentUseragent: String = Config.BlockUserAgent
-    private var currentEndpoint: String = Config.DatadomeEndpoint
+    private var currentUseragent: String = Config.blockUserAgent
+    private var currentEndpoint: String = Config.datadomeEndpoint200
+    private var currentTestKey: String = Config.datadomeTestKey
     private var dataDomeSdk: DataDomeSDK?
     private var appVersion: String?
 
@@ -38,7 +39,7 @@ class AlamofireViewController: UIViewController, DataDomeSDKDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         self.appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
 
-        dataDomeSdk = DataDomeSDK(containerView: containerView, key: "my_test_key", appVersion: appVersion, userAgent: currentUseragent)
+        dataDomeSdk = DataDomeSDK(containerView: containerView, key: currentTestKey, appVersion: appVersion, userAgent: currentUseragent, integrationMode: .alamofire)
         dataDomeSdk?.delegate = self
 
         let configuration = URLSessionConfiguration.default
@@ -56,9 +57,9 @@ class AlamofireViewController: UIViewController, DataDomeSDKDelegate {
 
     private func initUI() {
         responseLabel.isHidden = true
+        responseTextView.isHidden = true
         delegateResponseLabel.isHidden = true
         self.userAgentLabel.text = String(format: "UA: %@ \nEP: %@", self.currentUseragent, self.currentEndpoint)
-        self.responseTextView.text = ""
 
         self.multipleRequestSwitchButton.onTintColor = .green
         self.multipleRequestSwitchButton.tintColor = .lightGray
@@ -68,22 +69,27 @@ class AlamofireViewController: UIViewController, DataDomeSDKDelegate {
 
     @IBAction func makeRequest(_ sender: UIButton) {
         responseLabel.isHidden = true
+        responseTextView.isHidden = true
         delegateResponseLabel.isHidden = true
-        self.responseTextView.text = ""
 
         let requestToMakeCount = multipleRequestSwitchButton.isOn ? 5 : 1
 
         for i in 1...requestToMakeCount {
             DispatchQueue.global(qos: .userInitiated).async {
-                /// Alamofire request Adapter/Retrier
                 self.alamofireSessionManager?.request(self.currentEndpoint).withDataDome(self.dataDomeSdk).validate().responseJSON { res in
                     guard let statusCode = res.response?.statusCode else { return }
+
                     DispatchQueue.main.async {
-                        let text = self.responseTextView.text ?? ""
-                        self.responseTextView.text = text == "" ? "Response from Task: \(i)" : "\(text)\nResponse from Task: \(i)"
                         print("Response from Task: \(i)")
+                        let color = UIColor(hue: .random(in: 0...1), saturation: 1, brightness: 1, alpha: 1)
+
                         self.responseLabel.text = String(format: "Response code: %d", statusCode)
                         self.responseLabel.isHidden = false
+                        self.responseLabel.textColor = color
+
+                        self.responseTextView.text = "\(String(describing: res.response))"
+                        self.responseTextView.isHidden = false
+                        self.responseTextView.textColor = color
                     }
                 }
             }
@@ -100,27 +106,39 @@ class AlamofireViewController: UIViewController, DataDomeSDKDelegate {
     }
 
     @IBAction func didClickOnSwitchUA(_ sender: Any) {
-        let alert = UIAlertController(title: "UA", message: "Choose wich Useragent", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "ALLOW",
+        let alert = UIAlertController(title: "UA and EP", message: "Choose wich Useragent and Endpoint you want", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ALLOW 200",
                                       style: .default,
-                                      handler: { _ in self.switchUaAndEndpoint(useragent: Config.StandardUserAgent, endpoint: Config.DatadomeEndpoint) }))
-        alert.addAction(UIAlertAction(title: "BLOCK",
+                                      handler: { _ in self.switchUaAndEndpoint(useragent: Config.standardUserAgent, endpoint: Config.datadomeEndpoint200) }))
+        alert.addAction(UIAlertAction(title: "ALLOW 404",
                                       style: .default,
-                                      handler: { _ in self.switchUaAndEndpoint(useragent: Config.BlockUserAgent, endpoint: Config.DatadomeEndpoint) }))
+                                      handler: { _ in self.switchUaAndEndpoint(useragent: Config.standardUserAgent, endpoint: Config.datadomeEndpoint404) }))
+        alert.addAction(UIAlertAction(title: "BLOCK 200",
+                                      style: .default,
+                                      handler: { _ in self.switchUaAndEndpoint(useragent: Config.blockUserAgent, endpoint: Config.datadomeEndpoint200) }))
+        alert.addAction(UIAlertAction(title: "BLOCK 404",
+                                      style: .default,
+                                      handler: { _ in self.switchUaAndEndpoint(useragent: Config.blockUserAgent, endpoint: Config.datadomeEndpoint404) }))
         self.present(alert, animated: true, completion: nil)
 
         responseLabel.isHidden = true
+        responseTextView.isHidden = true
         delegateResponseLabel.isHidden = true
     }
 
     @IBAction func didClickOnClearCache(_ sender: Any) {
-        dataDomeSdk?.clearCache(self.alamofireSessionManager, logId: 1, logMessage: "Cache cleared", logSource: self.logSource)
+        dataDomeSdk?.clearCache(alamofireSessionManager, logId: 1, logMessage: "Cache cleared", logSource: self.logSource)
         let alert = UIAlertController(title: "Cache cleared", message: "Cache is cleared", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
 
         responseLabel.isHidden = true
+        responseTextView.isHidden = true
         delegateResponseLabel.isHidden = true
+    }
+
+    func captchaNeedsContainer(_ instance: DataDomeSDK, forCaptchaUrl url: String) {
+        debugPrint("Captcha container needed")
     }
 
     func captcha(_ instance: DataDomeSDK, willAppear webView: UIView?) {

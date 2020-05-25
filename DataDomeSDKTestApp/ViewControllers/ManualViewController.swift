@@ -1,15 +1,14 @@
 //
 //  ManualViewController.swift
-//  DataDomeSDKTestApp
+//  DataDomePOCCaptchaIOS
 //
-//  Created by Hugo Maurer on 02/10/2019.
-//  Copyright © 2019 DataDome. All rights reserved.
+//  Created by Hugo Maurer on 23/09/2019.
+//  Copyright © 2019 dev-datadome-05. All rights reserved.
 //
 
 import Foundation
 import UIKit
 import DataDomeSDK
-import Alamofire
 
 class ManualViewController: UIViewController, DataDomeSDKDelegate {
 
@@ -20,14 +19,16 @@ class ManualViewController: UIViewController, DataDomeSDKDelegate {
     @IBOutlet weak var userAgentLabel: UILabel!
     @IBOutlet weak var delegateResponseLabel: UILabel!
     @IBOutlet weak var responseLabel: UILabel!
+    @IBOutlet weak var responseTextView: UITextView!
     @IBOutlet var containerView: UIView!
 
     /**
      * Variable declaration
-     */ 
-    private var logSource = "Manual VC"
-    private var currentUseragent: String = Config.BlockUserAgent
-    private var currentEndpoint: String = Config.DatadomeEndpoint
+     */
+    private var logSource = "URLSession VC"
+    private var currentUseragent: String = Config.blockUserAgent
+    private var currentEndpoint: String = Config.datadomeEndpoint200
+    private var currentTestKey: String = Config.datadomeTestKey
     private var dataDomeSdk: DataDomeSDK?
     private var appVersion: String?
     private var requestsCount = 0
@@ -35,17 +36,21 @@ class ManualViewController: UIViewController, DataDomeSDKDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
         self.appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
 
-        dataDomeSdk = DataDomeSDK(containerView: containerView, key: "my_test_key", appVersion: appVersion, userAgent: currentUseragent)
+        dataDomeSdk = DataDomeSDK(containerView: containerView, key: currentTestKey, appVersion: appVersion, userAgent: currentUseragent)
+        //dataDomeSdk = DataDomeSDK(key: currentTestKey, appVersion: appVersion, userAgent: currentUseragent)
         dataDomeSdk?.delegate = self
 
+        /// URLSession delegate
         urlSession = URLSession(configuration: URLSessionConfiguration.default)
         initUI()
     }
 
     private func initUI() {
         responseLabel.isHidden = true
+        responseTextView.isHidden = true
         delegateResponseLabel.isHidden = true
         self.userAgentLabel.text = String(format: "UA: %@ \nEP: %@", self.currentUseragent, self.currentEndpoint)
     }
@@ -56,11 +61,13 @@ class ManualViewController: UIViewController, DataDomeSDKDelegate {
         var request = URLRequest(url: url)
 
         responseLabel.isHidden = true
+        responseTextView.isHidden = true
         delegateResponseLabel.isHidden = true
 
         requestsCount += 1
 
-        if let headers = dataDomeSdk?.getHeaders(withUserAgent: true) {
+        /// URLSession delegate/Users/hugomaurer/Downloads/TokenAuthenticator.java
+        if let headers = dataDomeSdk?.getHeaders() {
             for header in headers {
                 print("\(header.key) -> \(header.value)")
                 request.addValue(header.value, forHTTPHeaderField: header.key)
@@ -74,20 +81,22 @@ class ManualViewController: UIViewController, DataDomeSDKDelegate {
                 return
             }
 
-            debugPrint("URL: \(url)")
-
             if self.dataDomeSdk?.verifyResponse(statusCode: httpResponse.statusCode, headers: httpResponse.allHeaderFields, url: url) == true {
                 self.dataDomeSdk?.handleResponse(statusCode: httpResponse.statusCode,
                                                  headers: httpResponse.allHeaderFields,
                                                  url: url,
                                                  data: data,
                                                  completion: { (completion, message) in
-                                                    debugPrint(message ?? "")
+                                                    print(completion)
+                                                    print(message ?? "")
                 })
             } else {
                 DispatchQueue.main.async {
                     self.responseLabel.text = String(format: "Response code: %d", httpResponse.statusCode)
                     self.responseLabel.isHidden = false
+
+                    self.responseTextView.text = "\(httpResponse)"
+                    self.responseTextView.isHidden = false
                 }
             }
         })
@@ -103,28 +112,59 @@ class ManualViewController: UIViewController, DataDomeSDKDelegate {
         self.userAgentLabel.text = String(format: "UA: %@ \nEP: %@", useragent, endpoint)
     }
 
+    @IBAction func readCookie(_ sender: Any) {
+        dataDomeSdk?.readCookie(completion: { (_) in
+            guard let cookie = self.dataDomeSdk?.getLastCookie() else {
+                self.responseTextView.isHidden = true
+                return
+            }
+            self.displayCookie(cookie: cookie)
+            self.responseTextView.isHidden = false
+        })
+    }
+
+    private func displayCookie(cookie: HTTPCookie) {
+        self.responseTextView.text = "Name: \(cookie.name)"
+        self.responseTextView.text += "\nDomain: \(cookie.domain)"
+        self.responseTextView.text += "\nPath: \(cookie.path)"
+        self.responseTextView.text += "\nExpires: \(cookie.expiresDate?.description ?? "")"
+        self.responseTextView.text += "\nValue: \(cookie.value)"
+    }
+
     @IBAction func didClickOnSwitchUA(_ sender: Any) {
-        let alert = UIAlertController(title: "UA", message: "Choose wich Useragent", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "ALLOW",
+        let alert = UIAlertController(title: "UA and EP", message: "Choose wich Useragent and Endpoint you want", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ALLOW 200",
                                       style: .default,
-                                      handler: { _ in self.switchUaAndEndpoint(useragent: Config.StandardUserAgent, endpoint: Config.DatadomeEndpoint) }))
-        alert.addAction(UIAlertAction(title: "BLOCK",
+                                      handler: { _ in self.switchUaAndEndpoint(useragent: Config.standardUserAgent, endpoint: Config.datadomeEndpoint200) }))
+        alert.addAction(UIAlertAction(title: "ALLOW 404",
                                       style: .default,
-                                      handler: { _ in self.switchUaAndEndpoint(useragent: Config.BlockUserAgent, endpoint: Config.DatadomeEndpoint) }))
+                                      handler: { _ in self.switchUaAndEndpoint(useragent: Config.standardUserAgent, endpoint: Config.datadomeEndpoint404) }))
+        alert.addAction(UIAlertAction(title: "BLOCK 200",
+                                      style: .default,
+                                      handler: { _ in self.switchUaAndEndpoint(useragent: Config.blockUserAgent, endpoint: Config.datadomeEndpoint200) }))
+        alert.addAction(UIAlertAction(title: "BLOCK 404",
+                                      style: .default,
+                                      handler: { _ in self.switchUaAndEndpoint(useragent: Config.blockUserAgent, endpoint: Config.datadomeEndpoint404) }))
         self.present(alert, animated: true, completion: nil)
 
         responseLabel.isHidden = true
+        responseTextView.isHidden = true
         delegateResponseLabel.isHidden = true
     }
 
     @IBAction func didClickOnClearCache(_ sender: Any) {
-        dataDomeSdk?.clearCache(AF, logId: 1, logMessage: "Cache cleared", logSource: self.logSource)
+        dataDomeSdk?.clearCache(logId: 1, logMessage: "Cache cleared", logSource: self.logSource)
         let alert = UIAlertController(title: "Cache cleared", message: "Cache is cleared", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
 
         responseLabel.isHidden = true
+        responseTextView.isHidden = true
         delegateResponseLabel.isHidden = true
+    }
+
+    func captchaNeedsContainer(_ instance: DataDomeSDK, forCaptchaUrl url: String) {
+        debugPrint("Captcha container needed for url: \(url)")
     }
 
     func captcha(_ instance: DataDomeSDK, willAppear webView: UIView?) {

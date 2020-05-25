@@ -9,7 +9,9 @@
 import Foundation
 
 public enum Config {
-    static let BlockUserAgent = "BLOCKUA"
-    static let StandardUserAgent = "ALLOWUA"
-    static let DatadomeEndpoint = "https://datadome.co/wp-json"
+    static let blockUserAgent = "BLOCKUA"
+    static let standardUserAgent = "ALLOWUA"
+    static let datadomeEndpoint200 = "https://datadome.co/wp-json"
+    static let datadomeEndpoint404 = "https://datadome.co/apidatadome"
+    static let datadomeTestKey = "my_test_key"
 }

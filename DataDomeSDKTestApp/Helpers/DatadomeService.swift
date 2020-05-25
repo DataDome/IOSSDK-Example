@@ -16,11 +16,11 @@ enum DatadomeService {
 // MARK: - TargetType Protocol Implementation
 extension DatadomeService: TargetType {
     var headers: [String: String]? {
-        return [:]
+        [:]
     }
 
     var validationType: ValidationType {
-        return .successAndRedirectCodes
+        .successAndRedirectCodes
     }
 
     var baseURL: URL {
@@ -38,15 +38,15 @@ extension DatadomeService: TargetType {
     }
 
     var method: Moya.Method {
-        return .get
+        .get
     }
 
     var sampleData: Data {
-        return "".data(using: String.Encoding.utf8) ?? Data()
+        "".data(using: String.Encoding.utf8) ?? Data()
     }
 
     var multipartBody: [Moya.MultipartFormData]? {
-        return nil
+        nil
     }
 
     var task: Task {

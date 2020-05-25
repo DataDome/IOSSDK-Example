@@ -10,6 +10,7 @@ import UIKit
 import DataDomeSDK
 import Alamofire
 import Moya
+import AVFoundation
 
 class MoyaViewController: UIViewController, DataDomeSDKDelegate {
 
@@ -20,15 +21,16 @@ class MoyaViewController: UIViewController, DataDomeSDKDelegate {
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var delegateResponseLabel: UILabel!
     @IBOutlet weak var responseLabel: UILabel!
-    @IBOutlet weak var multipleRequestSwitchButton: UISwitch!
     @IBOutlet weak var responseTextView: UITextView!
-    
+    @IBOutlet weak var multipleRequestSwitchButton: UISwitch!
+
     /**
      * Variable declaration
      */
     private var logSource = "Moya VC"
-    private var currentUseragent: String = Config.BlockUserAgent
-    private var currentEndpoint: String = Config.DatadomeEndpoint
+    private var currentUseragent: String = Config.blockUserAgent
+    private var currentEndpoint: String = Config.datadomeEndpoint200
+    private var currentTestKey: String = Config.datadomeTestKey
     private var dataDomeSdk: DataDomeSDK?
     private var appVersion: String?
 
@@ -50,7 +52,7 @@ class MoyaViewController: UIViewController, DataDomeSDKDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         self.appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
 
-        dataDomeSdk = DataDomeSDK(containerView: containerView, key: "my_test_key", appVersion: appVersion, userAgent: currentUseragent)
+        dataDomeSdk = DataDomeSDK(containerView: containerView, key: currentTestKey, appVersion: appVersion, userAgent: currentUseragent, integrationMode: .moya)
         dataDomeSdk?.delegate = self
 
         initUI()
@@ -58,9 +60,9 @@ class MoyaViewController: UIViewController, DataDomeSDKDelegate {
 
     private func initUI() {
         responseLabel.isHidden = true
+        responseTextView.isHidden = true
         delegateResponseLabel.isHidden = true
         self.userAgentLabel.text = String(format: "UA: %@ \nEP: %@", self.currentUseragent, self.currentEndpoint)
-        responseTextView.text = ""
 
         self.multipleRequestSwitchButton.onTintColor = .green
         self.multipleRequestSwitchButton.tintColor = .lightGray
@@ -70,19 +72,19 @@ class MoyaViewController: UIViewController, DataDomeSDKDelegate {
 
     @IBAction func makeRequest(_ sender: UIButton) {
         responseLabel.isHidden = true
+        responseTextView.isHidden = true
         delegateResponseLabel.isHidden = true
-        responseTextView.text = ""
 
         let requestToMakeCount = multipleRequestSwitchButton.isOn ? 5 : 1
-        for i in 1...requestToMakeCount {
-            moyaCall(idToPrint: i)
+        for _ in 1...requestToMakeCount {
+            moyaCall()
         }
     }
 
-    private func moyaCall(idToPrint: Int) {
+    private func moyaCall() {
         let provider = MoyaProvider<DatadomeService>(endpointClosure: moyaEndPointClosure(),
-                                                     session: self.alamofireSessionManager,
-                                                     plugins: [NetworkLoggerPlugin(configuration: .init(logOptions: .verbose)), DataDomePlugin(with: self.dataDomeSdk)])
+                                                     session: alamofireSessionManager,
+                                                     plugins: [DataDomePlugin(with: self.dataDomeSdk)])
 
         let target = DatadomeService.getDataDomeService
 
@@ -92,27 +94,36 @@ class MoyaViewController: UIViewController, DataDomeSDKDelegate {
             case let .success(response):
                 guard let statusCode = response.response?.statusCode else { return }
                 DispatchQueue.main.async {
+
+                    let color = UIColor(hue: .random(in: 0...1), saturation: 1, brightness: 1, alpha: 1)
+
                     self.responseLabel.text = String(format: "Response code: %d", statusCode)
                     self.responseLabel.isHidden = false
-                    let text = self.responseTextView.text ?? ""
-                    self.responseTextView.text = text == "" ? "Response from Task: \(idToPrint)" : "\(text)\nResponse from Task: \(idToPrint)"
+                    self.responseLabel.textColor = color
+
+                    self.responseTextView.text = "\(String(describing: response.response))"
+                    self.responseTextView.isHidden = false
+                    self.responseTextView.textColor = color
                 }
             case let .failure(error):
                 guard let statusCode = error.response?.statusCode else { return }
                 DispatchQueue.main.async {
+
+                    let color = UIColor(hue: .random(in: 0...1), saturation: 1, brightness: 1, alpha: 1)
+
                     self.responseLabel.text = String(format: "Response code: %d", statusCode)
                     self.responseLabel.isHidden = false
-                    let text = self.responseTextView.text ?? ""
-                    self.responseTextView.text = text == "" ? "Response from Task: \(idToPrint)" : "\(text)\nResponse from Task: \(idToPrint)"
+                    self.responseLabel.textColor = color
+
+                    self.responseTextView.text = "\(error)"
+                    self.responseTextView.isHidden = false
+                    self.responseTextView.textColor = color
                 }
             }
         })
     }
 
-    private func moyaEndPointClosure() -> MoyaProvider<DatadomeService>.EndpointClosure {
-
-        return { (target: DatadomeService) -> Endpoint in
-
+    private func moyaEndPointClosure() -> MoyaProvider<DatadomeService>.EndpointClosure { { (target: DatadomeService) -> Endpoint in
             let url = self.currentEndpoint
             let endpoint = Endpoint(
                 url: url,
@@ -121,7 +132,6 @@ class MoyaViewController: UIViewController, DataDomeSDKDelegate {
                 task: target.task,
                 httpHeaderFields: target.headers
             )
-
             return endpoint
         }
     }
@@ -135,28 +145,57 @@ class MoyaViewController: UIViewController, DataDomeSDKDelegate {
         self.userAgentLabel.text = String(format: "UA: %@ \nEP: %@", useragent, endpoint)
     }
 
+    @IBAction func didClickOnCamera(_ sender: Any) {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .notDetermined: // The user has not yet been asked for camera access.
+            AVCaptureDevice.requestAccess(for: .video) { _ in
+            }
+        default:
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                    // "App-Prefs:root=General"
+                    UIApplication.shared.openURL(url)
+                }
+            }
+        }
+    }
+
     @IBAction func didClickOnSwitchUA(_ sender: Any) {
-        let alert = UIAlertController(title: "UA", message: "Choose wich Useragent", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "ALLOW",
+        let alert = UIAlertController(title: "UA and EP", message: "Choose wich Useragent and Endpoint you want", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ALLOW 200",
                                       style: .default,
-                                      handler: { _ in self.switchUaAndEndpoint(useragent: Config.StandardUserAgent, endpoint: Config.DatadomeEndpoint) }))
-        alert.addAction(UIAlertAction(title: "BLOCK",
+                                      handler: { _ in self.switchUaAndEndpoint(useragent: Config.standardUserAgent, endpoint: Config.datadomeEndpoint200) }))
+        alert.addAction(UIAlertAction(title: "ALLOW 404",
                                       style: .default,
-                                      handler: { _ in self.switchUaAndEndpoint(useragent: Config.BlockUserAgent, endpoint: Config.DatadomeEndpoint) }))
+                                      handler: { _ in self.switchUaAndEndpoint(useragent: Config.standardUserAgent, endpoint: Config.datadomeEndpoint404) }))
+        alert.addAction(UIAlertAction(title: "BLOCK 200",
+                                      style: .default,
+                                      handler: { _ in self.switchUaAndEndpoint(useragent: Config.blockUserAgent, endpoint: Config.datadomeEndpoint200) }))
+        alert.addAction(UIAlertAction(title: "BLOCK 404",
+                                      style: .default,
+                                      handler: { _ in self.switchUaAndEndpoint(useragent: Config.blockUserAgent, endpoint: Config.datadomeEndpoint404) }))
         self.present(alert, animated: true, completion: nil)
 
         responseLabel.isHidden = true
+        responseTextView.isHidden = true
         delegateResponseLabel.isHidden = true
     }
 
     @IBAction func didClickOnClearCache(_ sender: Any) {
-        dataDomeSdk?.clearCache(self.alamofireSessionManager, logId: 1, logMessage: "Cache cleared", logSource: self.logSource)
+        dataDomeSdk?.clearCache(AF, logId: 1, logMessage: "Cache cleared", logSource: self.logSource)
         let alert = UIAlertController(title: "Cache cleared", message: "Cache is cleared", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
 
         responseLabel.isHidden = true
+        responseTextView.isHidden = true
         delegateResponseLabel.isHidden = true
+    }
+
+    func captchaNeedsContainer(_ instance: DataDomeSDK, forCaptchaUrl url: String) {
+        debugPrint("Captcha container needed")
     }
 
     func captcha(_ instance: DataDomeSDK, willAppear webView: UIView?) {
