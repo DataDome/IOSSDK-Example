@@ -1,8 +1,8 @@
 # DataDome
 
-[![Version](https://img.shields.io/cocoapods/v/DataDome.svg?style=flat)](http://cocoapods.org/pods/DataDomeSDK)
-[![License](https://img.shields.io/cocoapods/l/DataDome.svg?style=flat)](http://cocoapods.org/pods/DataDomeSDK)
-[![Platform](https://img.shields.io/cocoapods/p/DataDome.svg?style=flat)](http://cocoapods.org/pods/DataDomeSDK)
+[![Version](https://img.shields.io/cocoapods/v/DataDomeSDK.svg?style=flat)](http://cocoapods.org/pods/DataDomeSDK)
+[![License](https://img.shields.io/cocoapods/l/DataDomeSDK.svg?style=flat)](http://cocoapods.org/pods/DataDomeSDK)
+[![Platform](https://img.shields.io/cocoapods/p/DataDomeSDK.svg?style=flat)](http://cocoapods.org/pods/DataDomeSDK)
 
 ## Installation
 
