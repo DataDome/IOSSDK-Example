@@ -7,18 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4AFE309B228EE7FD00F7D3D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFE309A228EE7FD00F7D3D2 /* AppDelegate.swift */; };
-		4AFE30A0228EE7FD00F7D3D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AFE309E228EE7FD00F7D3D2 /* Main.storyboard */; };
-		4AFE30A2228EE80100F7D3D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AFE30A1228EE80100F7D3D2 /* Assets.xcassets */; };
-		4AFE30A5228EE80100F7D3D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AFE30A3228EE80100F7D3D2 /* LaunchScreen.storyboard */; };
+		80C6D079250B79F500A2CFF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6D06A250B79F500A2CFF5 /* AppDelegate.swift */; };
+		80C6D07A250B79F500A2CFF5 /* AlamofireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6D06C250B79F500A2CFF5 /* AlamofireViewController.swift */; };
+		80C6D07B250B79F500A2CFF5 /* MoyaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6D06D250B79F500A2CFF5 /* MoyaViewController.swift */; };
+		80C6D07C250B79F500A2CFF5 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6D06E250B79F500A2CFF5 /* NetworkingViewController.swift */; };
+		80C6D07D250B79F500A2CFF5 /* URLSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6D06F250B79F500A2CFF5 /* URLSessionViewController.swift */; };
+		80C6D07E250B79F500A2CFF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6D070250B79F500A2CFF5 /* SceneDelegate.swift */; };
+		80C6D07F250B79F500A2CFF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80C6D073250B79F500A2CFF5 /* LaunchScreen.storyboard */; };
+		80C6D080250B79F500A2CFF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80C6D074250B79F500A2CFF5 /* Main.storyboard */; };
+		80C6D081250B79F500A2CFF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80C6D075250B79F500A2CFF5 /* Assets.xcassets */; };
 		E56E47FFD28692F7AC56CBEB /* Pods_DataDomeSDKTestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A189BBFBF6D8D062A5303873 /* Pods_DataDomeSDKTestApp.framework */; };
-		F13327FD2344A14100DED843 /* ManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13327FC2344A14100DED843 /* ManualViewController.swift */; };
-		F193630422E9E520003AFD10 /* MoyaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193630122E9E520003AFD10 /* MoyaViewController.swift */; };
-		F193630522E9E520003AFD10 /* AlamofireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193630222E9E520003AFD10 /* AlamofireViewController.swift */; };
-		F193630622E9E520003AFD10 /* URLSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193630322E9E520003AFD10 /* URLSessionViewController.swift */; };
-		F193630B22E9E53B003AFD10 /* Datadome+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193630822E9E53B003AFD10 /* Datadome+Helper.swift */; };
-		F193630C22E9E53B003AFD10 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193630922E9E53B003AFD10 /* Config.swift */; };
-		F193630D22E9E53B003AFD10 /* DatadomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193630A22E9E53B003AFD10 /* DatadomeService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,24 +35,21 @@
 /* Begin PBXFileReference section */
 		0042BC06FB6329138F589F76 /* Pods-DataDomeSDKTestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataDomeSDKTestApp.release.xcconfig"; path = "Target Support Files/Pods-DataDomeSDKTestApp/Pods-DataDomeSDKTestApp.release.xcconfig"; sourceTree = "<group>"; };
 		4AFE3097228EE7FD00F7D3D2 /* DataDomeSDKTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataDomeSDKTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4AFE309A228EE7FD00F7D3D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4AFE309F228EE7FD00F7D3D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4AFE30A1228EE80100F7D3D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4AFE30A4228EE80100F7D3D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4AFE30A6228EE80100F7D3D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B27CA8A59D2E6C3FE7CC237 /* Pods-DataDomeSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataDomeSDK.release.xcconfig"; path = "Target Support Files/Pods-DataDomeSDK/Pods-DataDomeSDK.release.xcconfig"; sourceTree = "<group>"; };
+		80C6D06A250B79F500A2CFF5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		80C6D06C250B79F500A2CFF5 /* AlamofireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireViewController.swift; sourceTree = "<group>"; };
+		80C6D06D250B79F500A2CFF5 /* MoyaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoyaViewController.swift; sourceTree = "<group>"; };
+		80C6D06E250B79F500A2CFF5 /* NetworkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingViewController.swift; sourceTree = "<group>"; };
+		80C6D06F250B79F500A2CFF5 /* URLSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionViewController.swift; sourceTree = "<group>"; };
+		80C6D070250B79F500A2CFF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		80C6D073250B79F500A2CFF5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		80C6D074250B79F500A2CFF5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		80C6D075250B79F500A2CFF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		80C6D077250B79F500A2CFF5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		824975CE876D485D04968283 /* Pods-DataDomeSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataDomeSDK.debug.xcconfig"; path = "Target Support Files/Pods-DataDomeSDK/Pods-DataDomeSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		8FABBC6C3A91723B7FDAC0F2 /* Pods-DataDomeSDKTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataDomeSDKTestApp.debug.xcconfig"; path = "Target Support Files/Pods-DataDomeSDKTestApp/Pods-DataDomeSDKTestApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A189BBFBF6D8D062A5303873 /* Pods_DataDomeSDKTestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataDomeSDKTestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF75023E5164CDB5777575EC /* Pods_DataDomeSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataDomeSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F13327FC2344A14100DED843 /* ManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualViewController.swift; sourceTree = "<group>"; };
-		F182ED692329490300B73F76 /* DataDomeSDKTestApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DataDomeSDKTestApp.entitlements; sourceTree = "<group>"; };
-		F193630122E9E520003AFD10 /* MoyaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoyaViewController.swift; sourceTree = "<group>"; };
-		F193630222E9E520003AFD10 /* AlamofireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireViewController.swift; sourceTree = "<group>"; };
-		F193630322E9E520003AFD10 /* URLSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionViewController.swift; sourceTree = "<group>"; };
-		F193630822E9E53B003AFD10 /* Datadome+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Datadome+Helper.swift"; sourceTree = "<group>"; };
-		F193630922E9E53B003AFD10 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		F193630A22E9E53B003AFD10 /* DatadomeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatadomeService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +96,9 @@
 		4AFE3099228EE7FD00F7D3D2 /* DataDomeSDKTestApp */ = {
 			isa = PBXGroup;
 			children = (
-				F182ED692329490300B73F76 /* DataDomeSDKTestApp.entitlements */,
-				F193630722E9E530003AFD10 /* Helpers */,
-				F193630022E9E50D003AFD10 /* ViewControllers */,
-				4AFE309A228EE7FD00F7D3D2 /* AppDelegate.swift */,
-				4AFE309E228EE7FD00F7D3D2 /* Main.storyboard */,
-				4AFE30A1228EE80100F7D3D2 /* Assets.xcassets */,
-				4AFE30A3228EE80100F7D3D2 /* LaunchScreen.storyboard */,
-				4AFE30A6228EE80100F7D3D2 /* Info.plist */,
+				80C6D068250B79F500A2CFF5 /* Classes */,
+				80C6D071250B79F500A2CFF5 /* Resources */,
+				80C6D076250B79F500A2CFF5 /* Supporting Files */,
 			);
 			path = DataDomeSDKTestApp;
 			sourceTree = "<group>";
@@ -122,25 +112,51 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F193630022E9E50D003AFD10 /* ViewControllers */ = {
+		80C6D068250B79F500A2CFF5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				F193630222E9E520003AFD10 /* AlamofireViewController.swift */,
-				F193630122E9E520003AFD10 /* MoyaViewController.swift */,
-				F193630322E9E520003AFD10 /* URLSessionViewController.swift */,
-				F13327FC2344A14100DED843 /* ManualViewController.swift */,
+				80C6D070250B79F500A2CFF5 /* SceneDelegate.swift */,
+				80C6D06A250B79F500A2CFF5 /* AppDelegate.swift */,
+				80C6D06B250B79F500A2CFF5 /* Controllers */,
 			);
-			path = ViewControllers;
+			path = Classes;
 			sourceTree = "<group>";
 		};
-		F193630722E9E530003AFD10 /* Helpers */ = {
+		80C6D06B250B79F500A2CFF5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F193630922E9E53B003AFD10 /* Config.swift */,
-				F193630822E9E53B003AFD10 /* Datadome+Helper.swift */,
-				F193630A22E9E53B003AFD10 /* DatadomeService.swift */,
+				80C6D06C250B79F500A2CFF5 /* AlamofireViewController.swift */,
+				80C6D06D250B79F500A2CFF5 /* MoyaViewController.swift */,
+				80C6D06E250B79F500A2CFF5 /* NetworkingViewController.swift */,
+				80C6D06F250B79F500A2CFF5 /* URLSessionViewController.swift */,
 			);
-			path = Helpers;
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		80C6D071250B79F500A2CFF5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				80C6D072250B79F500A2CFF5 /* Interface */,
+				80C6D075250B79F500A2CFF5 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		80C6D072250B79F500A2CFF5 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				80C6D073250B79F500A2CFF5 /* LaunchScreen.storyboard */,
+				80C6D074250B79F500A2CFF5 /* Main.storyboard */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		80C6D076250B79F500A2CFF5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				80C6D077250B79F500A2CFF5 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,7 +190,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1170;
 				ORGANIZATIONNAME = DataDome;
 				TargetAttributes = {
 					4AFE3096228EE7FD00F7D3D2 = {
@@ -220,9 +236,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AFE30A5228EE80100F7D3D2 /* LaunchScreen.storyboard in Resources */,
-				4AFE30A2228EE80100F7D3D2 /* Assets.xcassets in Resources */,
-				4AFE30A0228EE7FD00F7D3D2 /* Main.storyboard in Resources */,
+				80C6D07F250B79F500A2CFF5 /* LaunchScreen.storyboard in Resources */,
+				80C6D081250B79F500A2CFF5 /* Assets.xcassets in Resources */,
+				80C6D080250B79F500A2CFF5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,37 +308,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F193630D22E9E53B003AFD10 /* DatadomeService.swift in Sources */,
-				F193630622E9E520003AFD10 /* URLSessionViewController.swift in Sources */,
-				F13327FD2344A14100DED843 /* ManualViewController.swift in Sources */,
-				F193630422E9E520003AFD10 /* MoyaViewController.swift in Sources */,
-				F193630C22E9E53B003AFD10 /* Config.swift in Sources */,
-				4AFE309B228EE7FD00F7D3D2 /* AppDelegate.swift in Sources */,
-				F193630B22E9E53B003AFD10 /* Datadome+Helper.swift in Sources */,
-				F193630522E9E520003AFD10 /* AlamofireViewController.swift in Sources */,
+				80C6D07C250B79F500A2CFF5 /* NetworkingViewController.swift in Sources */,
+				80C6D07E250B79F500A2CFF5 /* SceneDelegate.swift in Sources */,
+				80C6D07B250B79F500A2CFF5 /* MoyaViewController.swift in Sources */,
+				80C6D079250B79F500A2CFF5 /* AppDelegate.swift in Sources */,
+				80C6D07D250B79F500A2CFF5 /* URLSessionViewController.swift in Sources */,
+				80C6D07A250B79F500A2CFF5 /* AlamofireViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		4AFE309E228EE7FD00F7D3D2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4AFE309F228EE7FD00F7D3D2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4AFE30A3228EE80100F7D3D2 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4AFE30A4228EE80100F7D3D2 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4AFE30A7228EE80100F7D3D2 /* Debug */ = {
@@ -376,7 +371,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -432,7 +427,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -447,12 +442,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8FABBC6C3A91723B7FDAC0F2 /* Pods-DataDomeSDKTestApp.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 59M7WG842C;
-				INFOPLIST_FILE = DataDomeSDKTestApp/Info.plist;
+				INFOPLIST_FILE = "DataDomeSDKTestApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -469,12 +463,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0042BC06FB6329138F589F76 /* Pods-DataDomeSDKTestApp.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 59M7WG842C;
-				INFOPLIST_FILE = DataDomeSDKTestApp/Info.plist;
+				INFOPLIST_FILE = "DataDomeSDKTestApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

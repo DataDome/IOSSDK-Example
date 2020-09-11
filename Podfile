@@ -2,6 +2,8 @@ platform :ios, '12.0'
 use_frameworks!
 
 target 'DataDomeSDKTestApp' do
-  pod 'Alamofire', '5.1.0'
-  pod 'DataDomeSDK', '1.114.8'
+  pod 'Alamofire', '~> 5.2.0'
+  pod 'DataDomeSDK', '~> 2.5.3'
+  pod 'DataDomeAlamofire', '~> 2.5.3'
+  pod 'Moya', '~> 14.0.0'
 end
