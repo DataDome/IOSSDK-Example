@@ -124,3 +124,5 @@ extension MyViewController: CaptchaDelegate {
     }
 }
 ```
+
+Visit the [official documentation](https://docs.datadome.co/docs/sdk-ios) for more details.
