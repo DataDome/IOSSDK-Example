@@ -1,15 +1,15 @@
 # DataDome
 
-[![Version](https://img.shields.io/cocoapods/v/DataDome.svg?style=flat)](http://cocoapods.org/pods/DataDome)
-[![License](https://img.shields.io/cocoapods/l/DataDome.svg?style=flat)](http://cocoapods.org/pods/DataDome)
-[![Platform](https://img.shields.io/cocoapods/p/DataDome.svg?style=flat)](http://cocoapods.org/pods/DataDome)
+[![Version](https://img.shields.io/cocoapods/v/DataDome.svg?style=flat)](http://cocoapods.org/pods/DataDomeSDK)
+[![License](https://img.shields.io/cocoapods/l/DataDome.svg?style=flat)](http://cocoapods.org/pods/DataDomeSDK)
+[![Platform](https://img.shields.io/cocoapods/p/DataDome.svg?style=flat)](http://cocoapods.org/pods/DataDomeSDK)
 
 ## Installation
 
-DataDome is available on [CocoaPods](http://cocoapods.org). To get the SDK integrated to your project, simply add the following line to your Podfile:
+DataDomeSDK is available on [CocoaPods](http://cocoapods.org). To get the SDK integrated to your project, simply add the following line to your Podfile:
 
 ```ruby
-pod "DataDome"
+pod "DataDomeSDK"
 ```
 
 Run `pod install` to download and integrate the framework to your project.
@@ -32,8 +32,8 @@ Congrats, the DataDome framework is well integrated
 If you need to see the logs produced by the framework, you can set the log level to control the detail of logs you get
 
 ```swift
-import DataDome
-DataDome.setLogLevel(level: .verbose)
+import DataDomeSDK
+DataDomeSDK.setLogLevel(level: .verbose)
 ```
 
 By default, the framework is completely silent.
@@ -96,7 +96,7 @@ Only the `URLSessionDataTasks` created by the above two methods are monitored an
 Here a sample code to create and execute a data task
 
 ```swift
-import DataDome
+import DataDomeSDK
 
 
 guard let url = URL(string: "https://datadome.co") else {
