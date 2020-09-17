@@ -28,9 +28,8 @@ class URLSessionViewController: NetworkingViewController {
         
         let request = URLRequest(url: url)
         
-        let task = URLSession.shared.protectedDataTask(withRequest: request,
-                                                       captchaDelegate: self,
-                                                       completionHandler: { _, response, _ in
+        let task = URLSession.shared.dataTask(with: request,
+                                              completionHandler: { _, response, _ in
             guard let httpResponse = response as? HTTPURLResponse else {
                 print("Leave Task in error mode: \(taskIdToPrint)")
                 return
@@ -51,9 +50,35 @@ class URLSessionViewController: NetworkingViewController {
         })
         task.resume()
     }
+    
+    @IBAction func changeWindowButtonPressed() {
+        guard let mainWindow = self.view.window else {
+            print("Unable to hold the main window")
+            return
+        }
+        
+        let vc = SecondWindowViewController(mainWindow: mainWindow)
+        if let scene = UIApplication.shared.connectedScenes.first {
+            guard let windowScene = (scene as? UIWindowScene) else {
+                return
+            }
+            
+            print(">>> windowScene: \(windowScene)")
+            let window: UIWindow = UIWindow(frame: windowScene.coordinateSpace.bounds)
+            window.windowScene = windowScene
+            
+            let controller = UIViewController()
+            window.rootViewController = controller
+            (windowScene.delegate as? SceneDelegate)?.window = window
+            window.makeKeyAndVisible()
+            
+            controller.present(vc, animated: true, completion: nil)
+        }
+        
+    }
 }
 
-extension URLSessionViewController: CaptchaDelegate {
+/*extension URLSessionViewController: CaptchaDelegate {
     func present(captchaController controller: UIViewController) {
         self.navigationController?.present(controller, animated: true, completion: nil)
     }
@@ -61,4 +86,4 @@ extension URLSessionViewController: CaptchaDelegate {
     func dismiss(captchaController controller: UIViewController) {
         controller.dismiss(animated: true, completion: nil)
     }
-}
+}*/

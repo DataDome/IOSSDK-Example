@@ -30,6 +30,7 @@ class AlamofireViewController: NetworkingViewController {
     override func makeRequest(index: Int) {
         self.alamofireSessionManager?.request(self.endpoint).validate().responseJSON { res in
             guard let statusCode = res.response?.statusCode else {
+                print("Did finish with error \(String(describing: res.error?.localizedDescription))")
                 return
             }
             

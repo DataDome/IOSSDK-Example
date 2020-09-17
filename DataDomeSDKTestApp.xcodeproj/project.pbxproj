@@ -7,15 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		80C6D079250B79F500A2CFF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6D06A250B79F500A2CFF5 /* AppDelegate.swift */; };
-		80C6D07A250B79F500A2CFF5 /* AlamofireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6D06C250B79F500A2CFF5 /* AlamofireViewController.swift */; };
-		80C6D07B250B79F500A2CFF5 /* MoyaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6D06D250B79F500A2CFF5 /* MoyaViewController.swift */; };
-		80C6D07C250B79F500A2CFF5 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6D06E250B79F500A2CFF5 /* NetworkingViewController.swift */; };
-		80C6D07D250B79F500A2CFF5 /* URLSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6D06F250B79F500A2CFF5 /* URLSessionViewController.swift */; };
-		80C6D07E250B79F500A2CFF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6D070250B79F500A2CFF5 /* SceneDelegate.swift */; };
-		80C6D07F250B79F500A2CFF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80C6D073250B79F500A2CFF5 /* LaunchScreen.storyboard */; };
-		80C6D080250B79F500A2CFF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80C6D074250B79F500A2CFF5 /* Main.storyboard */; };
-		80C6D081250B79F500A2CFF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80C6D075250B79F500A2CFF5 /* Assets.xcassets */; };
+		805406A02513BEC300958515 /* SecondWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805406922513BEC300958515 /* SecondWindowViewController.swift */; };
+		805406A12513BEC300958515 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805406932513BEC300958515 /* AppDelegate.swift */; };
+		805406A22513BEC300958515 /* AlamofireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805406952513BEC300958515 /* AlamofireViewController.swift */; };
+		805406A32513BEC300958515 /* MoyaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805406962513BEC300958515 /* MoyaViewController.swift */; };
+		805406A42513BEC300958515 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805406972513BEC300958515 /* NetworkingViewController.swift */; };
+		805406A52513BEC300958515 /* URLSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805406982513BEC300958515 /* URLSessionViewController.swift */; };
+		805406A62513BEC300958515 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805406992513BEC300958515 /* SceneDelegate.swift */; };
+		805406A72513BEC300958515 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054069C2513BEC300958515 /* LaunchScreen.storyboard */; };
+		805406A82513BEC300958515 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054069D2513BEC300958515 /* Main.storyboard */; };
+		805406A92513BEC300958515 /* SecondWindowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8054069E2513BEC300958515 /* SecondWindowViewController.xib */; };
+		805406AA2513BEC300958515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8054069F2513BEC300958515 /* Assets.xcassets */; };
 		E56E47FFD28692F7AC56CBEB /* Pods_DataDomeSDKTestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A189BBFBF6D8D062A5303873 /* Pods_DataDomeSDKTestApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,15 +38,17 @@
 		0042BC06FB6329138F589F76 /* Pods-DataDomeSDKTestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataDomeSDKTestApp.release.xcconfig"; path = "Target Support Files/Pods-DataDomeSDKTestApp/Pods-DataDomeSDKTestApp.release.xcconfig"; sourceTree = "<group>"; };
 		4AFE3097228EE7FD00F7D3D2 /* DataDomeSDKTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataDomeSDKTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B27CA8A59D2E6C3FE7CC237 /* Pods-DataDomeSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataDomeSDK.release.xcconfig"; path = "Target Support Files/Pods-DataDomeSDK/Pods-DataDomeSDK.release.xcconfig"; sourceTree = "<group>"; };
-		80C6D06A250B79F500A2CFF5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		80C6D06C250B79F500A2CFF5 /* AlamofireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireViewController.swift; sourceTree = "<group>"; };
-		80C6D06D250B79F500A2CFF5 /* MoyaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoyaViewController.swift; sourceTree = "<group>"; };
-		80C6D06E250B79F500A2CFF5 /* NetworkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingViewController.swift; sourceTree = "<group>"; };
-		80C6D06F250B79F500A2CFF5 /* URLSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionViewController.swift; sourceTree = "<group>"; };
-		80C6D070250B79F500A2CFF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		80C6D073250B79F500A2CFF5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		80C6D074250B79F500A2CFF5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		80C6D075250B79F500A2CFF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		805406922513BEC300958515 /* SecondWindowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondWindowViewController.swift; sourceTree = "<group>"; };
+		805406932513BEC300958515 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		805406952513BEC300958515 /* AlamofireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireViewController.swift; sourceTree = "<group>"; };
+		805406962513BEC300958515 /* MoyaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoyaViewController.swift; sourceTree = "<group>"; };
+		805406972513BEC300958515 /* NetworkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingViewController.swift; sourceTree = "<group>"; };
+		805406982513BEC300958515 /* URLSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionViewController.swift; sourceTree = "<group>"; };
+		805406992513BEC300958515 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		8054069C2513BEC300958515 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8054069D2513BEC300958515 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8054069E2513BEC300958515 /* SecondWindowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondWindowViewController.xib; sourceTree = "<group>"; };
+		8054069F2513BEC300958515 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80C6D077250B79F500A2CFF5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		824975CE876D485D04968283 /* Pods-DataDomeSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataDomeSDK.debug.xcconfig"; path = "Target Support Files/Pods-DataDomeSDK/Pods-DataDomeSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		8FABBC6C3A91723B7FDAC0F2 /* Pods-DataDomeSDKTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataDomeSDKTestApp.debug.xcconfig"; path = "Target Support Files/Pods-DataDomeSDKTestApp/Pods-DataDomeSDKTestApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -96,8 +100,8 @@
 		4AFE3099228EE7FD00F7D3D2 /* DataDomeSDKTestApp */ = {
 			isa = PBXGroup;
 			children = (
-				80C6D068250B79F500A2CFF5 /* Classes */,
-				80C6D071250B79F500A2CFF5 /* Resources */,
+				805406912513BEC300958515 /* Classes */,
+				8054069A2513BEC300958515 /* Resources */,
 				80C6D076250B79F500A2CFF5 /* Supporting Files */,
 			);
 			path = DataDomeSDKTestApp;
@@ -112,41 +116,43 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		80C6D068250B79F500A2CFF5 /* Classes */ = {
+		805406912513BEC300958515 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				80C6D070250B79F500A2CFF5 /* SceneDelegate.swift */,
-				80C6D06A250B79F500A2CFF5 /* AppDelegate.swift */,
-				80C6D06B250B79F500A2CFF5 /* Controllers */,
+				805406992513BEC300958515 /* SceneDelegate.swift */,
+				805406932513BEC300958515 /* AppDelegate.swift */,
+				805406942513BEC300958515 /* Controllers */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		80C6D06B250B79F500A2CFF5 /* Controllers */ = {
+		805406942513BEC300958515 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				80C6D06C250B79F500A2CFF5 /* AlamofireViewController.swift */,
-				80C6D06D250B79F500A2CFF5 /* MoyaViewController.swift */,
-				80C6D06E250B79F500A2CFF5 /* NetworkingViewController.swift */,
-				80C6D06F250B79F500A2CFF5 /* URLSessionViewController.swift */,
+				805406952513BEC300958515 /* AlamofireViewController.swift */,
+				805406962513BEC300958515 /* MoyaViewController.swift */,
+				805406972513BEC300958515 /* NetworkingViewController.swift */,
+				805406982513BEC300958515 /* URLSessionViewController.swift */,
+				805406922513BEC300958515 /* SecondWindowViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		80C6D071250B79F500A2CFF5 /* Resources */ = {
+		8054069A2513BEC300958515 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				80C6D072250B79F500A2CFF5 /* Interface */,
-				80C6D075250B79F500A2CFF5 /* Assets.xcassets */,
+				8054069B2513BEC300958515 /* Interface */,
+				8054069F2513BEC300958515 /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		80C6D072250B79F500A2CFF5 /* Interface */ = {
+		8054069B2513BEC300958515 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				80C6D073250B79F500A2CFF5 /* LaunchScreen.storyboard */,
-				80C6D074250B79F500A2CFF5 /* Main.storyboard */,
+				8054069C2513BEC300958515 /* LaunchScreen.storyboard */,
+				8054069D2513BEC300958515 /* Main.storyboard */,
+				8054069E2513BEC300958515 /* SecondWindowViewController.xib */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -236,9 +242,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80C6D07F250B79F500A2CFF5 /* LaunchScreen.storyboard in Resources */,
-				80C6D081250B79F500A2CFF5 /* Assets.xcassets in Resources */,
-				80C6D080250B79F500A2CFF5 /* Main.storyboard in Resources */,
+				805406A72513BEC300958515 /* LaunchScreen.storyboard in Resources */,
+				805406A82513BEC300958515 /* Main.storyboard in Resources */,
+				805406AA2513BEC300958515 /* Assets.xcassets in Resources */,
+				805406A92513BEC300958515 /* SecondWindowViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,7 +306,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -308,12 +315,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80C6D07C250B79F500A2CFF5 /* NetworkingViewController.swift in Sources */,
-				80C6D07E250B79F500A2CFF5 /* SceneDelegate.swift in Sources */,
-				80C6D07B250B79F500A2CFF5 /* MoyaViewController.swift in Sources */,
-				80C6D079250B79F500A2CFF5 /* AppDelegate.swift in Sources */,
-				80C6D07D250B79F500A2CFF5 /* URLSessionViewController.swift in Sources */,
-				80C6D07A250B79F500A2CFF5 /* AlamofireViewController.swift in Sources */,
+				805406A42513BEC300958515 /* NetworkingViewController.swift in Sources */,
+				805406A62513BEC300958515 /* SceneDelegate.swift in Sources */,
+				805406A32513BEC300958515 /* MoyaViewController.swift in Sources */,
+				805406A12513BEC300958515 /* AppDelegate.swift in Sources */,
+				805406A52513BEC300958515 /* URLSessionViewController.swift in Sources */,
+				805406A22513BEC300958515 /* AlamofireViewController.swift in Sources */,
+				805406A02513BEC300958515 /* SecondWindowViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
