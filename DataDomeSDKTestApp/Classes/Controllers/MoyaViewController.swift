@@ -160,10 +160,10 @@ extension MyService: TargetType {
         }
     }
         
-    //swiftlint:disable discouraged_optional_collection
+    // swiftlint:disable discouraged_optional_collection
     var headers: [String: String]? {
         let headers = ["Content-type": "application/json"]
         return headers
     }
-    //swiftlint:enable discouraged_optional_collection
+    // swiftlint:enable discouraged_optional_collection
 }
