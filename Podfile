@@ -6,6 +6,7 @@ target 'DataDomeSDKTestApp' do
   pod 'DataDomeSDK'
   pod 'DataDomeAlamofire'
   pod 'Moya', '~> 14.0.0'
-  
+  pod 'DataDomeApollo'
+
   pod 'SwiftLint'
 end

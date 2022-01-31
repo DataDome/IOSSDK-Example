@@ -9,7 +9,6 @@
 import UIKit
 import Alamofire
 import Moya
-import AVFoundation
 
 import DataDomeAlamofire
 
@@ -93,24 +92,6 @@ class MoyaViewController: NetworkingViewController {
             httpHeaderFields: target.headers
         )
         return endpoint
-        }
-    }
-    
-    
-    @IBAction func didClickOnCamera(_ sender: Any) {
-        switch AVCaptureDevice.authorizationStatus(for: .video) {
-        case .notDetermined: // The user has not yet been asked for camera access.
-            AVCaptureDevice.requestAccess(for: .video) { _ in
-            }
-        default:
-            if let url = URL(string: UIApplication.openSettingsURLString) {
-                if #available(iOS 10.0, *) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                } else {
-                    // "App-Prefs:root=General"
-                    UIApplication.shared.openURL(url)
-                }
-            }
         }
     }
 }

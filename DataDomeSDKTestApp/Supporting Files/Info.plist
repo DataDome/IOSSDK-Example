@@ -19,9 +19,9 @@
 	<key>CFBundleVersion</key>
 	<string>19</string>
 	<key>DataDomeKey</key>
-	<string>my_test_key</string>
+	<string>14D062F60A4BDE8CE8647DFC720349</string>
 	<key>DataDomeProxyEnabled</key>
-	<true/>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

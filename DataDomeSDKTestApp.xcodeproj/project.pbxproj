@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		802F28D627A7F75300E78D53 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 802F28D427A7F75300E78D53 /* schema.json */; };
+		802F28D727A7F75300E78D53 /* LaunchList.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 802F28D527A7F75300E78D53 /* LaunchList.graphql */; };
+		802F28D927A7F7C800E78D53 /* ApolloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F28D827A7F7C800E78D53 /* ApolloViewController.swift */; };
+		802F28DB27A7F87300E78D53 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F28DA27A7F87300E78D53 /* API.swift */; };
 		805406A02513BEC300958515 /* SecondWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805406922513BEC300958515 /* SecondWindowViewController.swift */; };
 		805406A12513BEC300958515 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805406932513BEC300958515 /* AppDelegate.swift */; };
 		805406A22513BEC300958515 /* AlamofireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805406952513BEC300958515 /* AlamofireViewController.swift */; };
@@ -38,6 +42,10 @@
 		0042BC06FB6329138F589F76 /* Pods-DataDomeSDKTestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataDomeSDKTestApp.release.xcconfig"; path = "Target Support Files/Pods-DataDomeSDKTestApp/Pods-DataDomeSDKTestApp.release.xcconfig"; sourceTree = "<group>"; };
 		4AFE3097228EE7FD00F7D3D2 /* DataDomeSDKTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataDomeSDKTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B27CA8A59D2E6C3FE7CC237 /* Pods-DataDomeSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataDomeSDK.release.xcconfig"; path = "Target Support Files/Pods-DataDomeSDK/Pods-DataDomeSDK.release.xcconfig"; sourceTree = "<group>"; };
+		802F28D427A7F75300E78D53 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		802F28D527A7F75300E78D53 /* LaunchList.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LaunchList.graphql; sourceTree = "<group>"; };
+		802F28D827A7F7C800E78D53 /* ApolloViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApolloViewController.swift; sourceTree = "<group>"; };
+		802F28DA27A7F87300E78D53 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		805406922513BEC300958515 /* SecondWindowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondWindowViewController.swift; sourceTree = "<group>"; };
 		805406932513BEC300958515 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		805406952513BEC300958515 /* AlamofireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +124,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		802F28D327A7F75300E78D53 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				802F28D427A7F75300E78D53 /* schema.json */,
+				802F28D527A7F75300E78D53 /* LaunchList.graphql */,
+			);
+			path = GraphQL;
+			sourceTree = "<group>";
+		};
 		805406912513BEC300958515 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +151,8 @@
 				805406962513BEC300958515 /* MoyaViewController.swift */,
 				805406982513BEC300958515 /* URLSessionViewController.swift */,
 				805406922513BEC300958515 /* SecondWindowViewController.swift */,
+				802F28D827A7F7C800E78D53 /* ApolloViewController.swift */,
+				802F28DA27A7F87300E78D53 /* API.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -141,6 +160,7 @@
 		8054069A2513BEC300958515 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				802F28D327A7F75300E78D53 /* GraphQL */,
 				8054069B2513BEC300958515 /* Interface */,
 				8054069F2513BEC300958515 /* Assets.xcassets */,
 			);
@@ -176,9 +196,10 @@
 				4AFE3093228EE7FD00F7D3D2 /* Sources */,
 				4AFE3094228EE7FD00F7D3D2 /* Frameworks */,
 				4AFE3095228EE7FD00F7D3D2 /* Resources */,
-				F1079D8422F3316A002002BA /* ShellScript */,
+				F1079D8422F3316A002002BA /* Run SwiftLint */,
 				29C26BA46D9DF0EF46FB2E4E /* [CP] Embed Pods Frameworks */,
 				804329E3247BBFD2006F0042 /* Embed Frameworks */,
+				802F28DC27A7F89600E78D53 /* Apollo CLI */,
 			);
 			buildRules = (
 			);
@@ -242,7 +263,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				802F28D727A7F75300E78D53 /* LaunchList.graphql in Resources */,
 				805406A72513BEC300958515 /* LaunchScreen.storyboard in Resources */,
+				802F28D627A7F75300E78D53 /* schema.json in Resources */,
 				805406A82513BEC300958515 /* Main.storyboard in Resources */,
 				805406AA2513BEC300958515 /* Assets.xcassets in Resources */,
 				805406A92513BEC300958515 /* SecondWindowViewController.xib in Resources */,
@@ -291,7 +314,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DataDomeSDKTestApp/Pods-DataDomeSDKTestApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F1079D8422F3316A002002BA /* ShellScript */ = {
+		802F28DC27A7F89600E78D53 /* Apollo CLI */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -300,6 +323,25 @@
 			);
 			inputPaths = (
 			);
+			name = "Apollo CLI";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\n#cd \"${SRCROOT}/${TARGET_NAME}\"\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://apollo-fullstack-tutorial.herokuapp.com/\"\n\n";
+		};
+		F1079D8422F3316A002002BA /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -318,9 +360,11 @@
 				805406A42513BEC300958515 /* NetworkingViewController.swift in Sources */,
 				805406A62513BEC300958515 /* SceneDelegate.swift in Sources */,
 				805406A32513BEC300958515 /* MoyaViewController.swift in Sources */,
+				802F28D927A7F7C800E78D53 /* ApolloViewController.swift in Sources */,
 				805406A12513BEC300958515 /* AppDelegate.swift in Sources */,
 				805406A52513BEC300958515 /* URLSessionViewController.swift in Sources */,
 				805406A22513BEC300958515 /* AlamofireViewController.swift in Sources */,
+				802F28DB27A7F87300E78D53 /* API.swift in Sources */,
 				805406A02513BEC300958515 /* SecondWindowViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

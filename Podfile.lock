@@ -1,18 +1,25 @@
 PODS:
   - Alamofire (5.2.2)
-  - DataDomeAlamofire (2.7.14):
+  - Apollo (0.49.1):
+    - Apollo/Core (= 0.49.1)
+  - Apollo/Core (0.49.1)
+  - DataDomeAlamofire (2.7.17):
     - Alamofire (> 4)
     - DataDomeSDK (> 2.6.4)
-  - DataDomeSDK (2.7.14)
+  - DataDomeApollo (2.7.16):
+    - Apollo (~> 0.49.1)
+    - DataDomeSDK (> 2.6.4)
+  - DataDomeSDK (2.7.17)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
-  - SwiftLint (0.45.1)
+  - SwiftLint (0.46.2)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2.0)
   - DataDomeAlamofire
+  - DataDomeApollo
   - DataDomeSDK
   - Moya (~> 14.0.0)
   - SwiftLint
@@ -20,18 +27,22 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Apollo
     - DataDomeAlamofire
+    - DataDomeApollo
     - DataDomeSDK
     - Moya
     - SwiftLint
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
-  DataDomeAlamofire: 3b37e198b5f80746a33aab5925758d9dd4c035ec
-  DataDomeSDK: fa920363df33970044c65fc72df5dbfe1bca0d09
+  Apollo: 69f35ed8f8d87c32ef89e99e4f8c682399e9192b
+  DataDomeAlamofire: aa1d028b9bb94b11556c1016792b5e98b59c1c2b
+  DataDomeApollo: 87453ec397d6c01c66f0d75456158d4143e79bbb
+  DataDomeSDK: 3bbe7f4c715b75f8c4c4f962f51e3a04892d9a51
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
-  SwiftLint: 06ac37e4d38c7068e0935bb30cda95f093bec761
+  SwiftLint: 6bc52a21f0fd44cab9aa2dc8e534fb9f5e3ec507
 
-PODFILE CHECKSUM: e60782caa991c574aaa0c77ea6256fe55eeb22cb
+PODFILE CHECKSUM: bcd69b6ef099e25fab250a2f1f23d11e37ab46a6
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2

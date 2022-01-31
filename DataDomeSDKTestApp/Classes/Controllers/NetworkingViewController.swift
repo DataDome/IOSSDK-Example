@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class NetworkingViewController: UIViewController {
 
@@ -18,7 +19,14 @@ class NetworkingViewController: UIViewController {
     @IBOutlet weak var responseTextView: UITextView!
     @IBOutlet weak var multipleRequestSwitchButton: UISwitch!
     
-    let endpoint: String = "https://datadome.co/wp-json"
+    func endpoint() -> String {
+        // For multi-domain accounts, use two endpoints with different domains
+        let firstEndpoint = "https://datadome.co/wp-json"
+        let secondEndpoint = "https://datadome.co/wp-json"
+        let endpoints = [firstEndpoint, secondEndpoint]
+        let endpoint = endpoints.randomElement() ?? firstEndpoint
+        return endpoint
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +45,22 @@ class NetworkingViewController: UIViewController {
         self.multipleRequestSwitchButton.backgroundColor = .lightGray
     }
 
+    @IBAction func didClickOnCamera(_ sender: Any) {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .notDetermined: // The user has not yet been asked for camera access.
+            AVCaptureDevice.requestAccess(for: .video) { _ in
+            }
+        default:
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                    // "App-Prefs:root=General"
+                    UIApplication.shared.openURL(url)
+                }
+            }
+        }
+    }
     
     @IBAction func didClickOnClearCache(_ sender: Any) {
         self.clearCache()
@@ -53,10 +77,10 @@ class NetworkingViewController: UIViewController {
         self.responseLabel.isHidden = true
         self.responseTextView.isHidden = true
         
-        let requestToMakeCount = multipleRequestSwitchButton.isOn ? 5 : 1
+        let requestToMakeCount = multipleRequestSwitchButton.isOn ? 50 : 1
         
-        for i in 1...requestToMakeCount {
-            self.makeRequest(index: i)
+        DispatchQueue.concurrentPerform(iterations: requestToMakeCount) { index in
+            self.makeRequest(index: index)
         }
     }
     
@@ -65,7 +89,8 @@ class NetworkingViewController: UIViewController {
     }
     
     func clearCache() {
-        for cookie in HTTPCookieStorage.shared.cookies ?? [] {
+        let cookies = HTTPCookieStorage.shared.cookies ?? []
+        for cookie in cookies {
             HTTPCookieStorage.shared.deleteCookie(cookie)
         }
     }
